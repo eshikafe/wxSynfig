@@ -1,5 +1,5 @@
 # synfig-reloaded
-Synfig with Python UI + C++ back end
+Synfig with Python UI and C++ back end
 
 This is an attempt to modernize Synfig with a new UI that is highly intuitive and user-friendly.
 "synfig-core" code base will remain in C++ but "synfig-studio" will be completely implemented in wxPython.
