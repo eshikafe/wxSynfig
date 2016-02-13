@@ -21,7 +21,6 @@ import sys
 import math
 import wx
 import wx.aui
-import wx.lib.agw.flatnotebook as fnb
 from dialogs.about import About
 
 
@@ -168,13 +167,13 @@ class App(wx.Frame):
         self.panel = self.CreatePanel()
         self._mgr.AddPane(self.panel, wx.aui.AuiPaneInfo().Name("work-area").CenterPane())
 
-        fnb_style = fnb.FNB_DEFAULT_STYLE|fnb.FNB_X_ON_TAB
-        self.nb = fnb.FlatNotebook(self.panel, wx.ID_ANY,  style=fnb_style)
-        self.NewAnimation()
+        # Notebook
+        self.nb = wx.aui.AuiNotebook(self.panel)
+        self.NewAnimationPage()
 
-        self.Bind(fnb.EVT_FLATNOTEBOOK_PAGE_CHANGED, self.OnPageSelected)
+        self.Bind(wx.aui.EVT_AUINOTEBOOK_PAGE_CHANGED, self.OnPageSelected)
 
-        sz = wx.BoxSizer(wx.VERTICAL)
+        sz = wx.BoxSizer()
         sz.Add(self.nb,2,wx.EXPAND)
         self.panel.SetSizer(sz)
         perspective_all = self._mgr.SavePerspective()
@@ -191,14 +190,14 @@ class App(wx.Frame):
         text = self.nb.GetPageText(self.nb.GetSelection())
         self.SetTitle(_(text + " - " + self.sTitle))
 
-    def NewAnimation(self):
+    def NewAnimationPage(self):
         self.page_count = self.page_count + 1
         title = "Synfig Animation " + str(self.page_count)
         self.nb.AddPage(self.CreatePanel(),title)
         self.SetTitle(_(title + " - " + self.sTitle))
 
     def OnNew(self, event):
-        self.NewAnimation()
+        self.NewAnimationPage()
 
     def OnAbout(self, event):
         about = About(self)
