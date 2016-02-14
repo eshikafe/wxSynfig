@@ -56,10 +56,7 @@ if sys.platform == 'win32':
 else:
     PLUGIN_DIR = "/usr/local/share/synfig/plugins"
 
-ID_New = wx.NewId()
-ID_Open = wx.NewId()
 ID_MenuOpenRecent = wx.NewId()
-ID_Save = wx.NewId()
 ID_SaveAs = wx.NewId()
 ID_SaveAll = wx.NewId()
 ID_Revert = wx.NewId()
@@ -67,7 +64,6 @@ ID_Import = wx.NewId()
 ID_Preview = wx.NewId()
 ID_Render = wx.NewId()
 ID_CloseDocument = wx.NewId()
-ID_Quit = wx.NewId()
 
 ID_Undo = wx.NewId()
 ID_Redo = wx.NewId()
@@ -80,6 +76,17 @@ ID_SelectAllHandles = wx.NewId()
 ID_UnselectAllHandles = wx.NewId()
 ID_InputDevices = wx.NewId()
 ID_Preferences = wx.NewId()
+
+ID_ShowMenubar = wx.NewId()
+ID_Toolbar = wx.NewId()
+ID_ShowHideHandles = wx.NewId()
+ID_ShowPositionHandles = wx.NewId()
+ID_ShowVertexHandles = wx.NewId()
+ID_LowResPixelSize = wx.NewId()
+ID_PreviewQuality = wx.NewId()
+ID_Play = wx.NewId()
+ID_Pause = wx.NewId()
+ID_ShowGrid = wx.NewId()
 
 ID_Help = wx.NewId()
 ID_HelpTutorials = wx.NewId()
@@ -110,12 +117,12 @@ class App(wx.Frame):
 
         # File menu
         menu_file = wx.Menu()
-        menu_file.Append(ID_New,_("New\tCtrl+N"))
-        menu_file.Append(ID_Open, _("Open\tCtrl+O"))
+        menu_file.Append(wx.ID_NEW,_("New\tCtrl+N"))
+        menu_file.Append(wx.ID_OPEN, _("Open\tCtrl+O"))
         menu_open_recent = wx.Menu()
         menu_file.AppendMenu(ID_MenuOpenRecent,_("Open Recent"), menu_open_recent)
         menu_file.AppendSeparator()
-        menu_file.Append(ID_Save, _("Save\tCtrl+S"))
+        menu_file.Append(wx.ID_SAVE, _("Save\tCtrl+S"))
         menu_file.Append(ID_SaveAs, _("Save As...\tShift+Ctrl+S"))
         menu_file.Append(ID_SaveAll, _("Save All"))
         menu_file.Append(ID_Revert, _("Revert"))
@@ -126,7 +133,7 @@ class App(wx.Frame):
         menu_file.Append(ID_Render, _("Render\tF9"))
         menu_file.AppendSeparator()
         menu_file.Append(ID_CloseDocument, _("Close Document\tCtrl+W"))
-        menu_file.Append(ID_Quit, _("Quit\tCtrl+Q"))
+        menu_file.Append(wx.ID_EXIT, _("Quit\tCtrl+Q"))
 
         # Edit menu
         menu_edit = wx.Menu()
@@ -147,6 +154,29 @@ class App(wx.Frame):
 
         # View menu
         menu_view = wx.Menu()
+        menu_view.Append(ID_ShowMenubar, _("Show Menuar"), kind=wx.ITEM_CHECK)
+        menu_view.Check(ID_ShowMenubar, True)
+        menu_view.Append(ID_Toolbar, _("Toolbar"))
+        menu_view.AppendSeparator()
+
+        show_hide_handles = wx.Menu()
+        show_hide_handles.Append(ID_ShowPositionHandles, _("Show Position Handles\tAlt+1"), kind=wx.ITEM_CHECK)
+        show_hide_handles.Check(ID_ShowPositionHandles, True)
+        show_hide_handles.Append(ID_ShowVertexHandles, _("Show Vertex Handles\tAlt+2"), kind=wx.ITEM_CHECK)
+        show_hide_handles.Check(ID_ShowVertexHandles, True)
+
+        menu_view.AppendMenu(ID_ShowHideHandles, _("Show/Hide Handles"), show_hide_handles)
+        preview_quality = wx.Menu()
+        menu_view.AppendMenu(ID_PreviewQuality, _("Preview Quality"), preview_quality)
+        low_res_pixel_size = wx.Menu()
+        menu_view.AppendMenu(ID_LowResPixelSize, _("Low-Res Pixel Size"), low_res_pixel_size)
+        menu_view.AppendSeparator()
+        menu_view.Append(ID_Play, _("Play"))
+        menu_view.Append(ID_Pause, _("Pause"))
+        menu_view.AppendSeparator()
+        menu_view.Append(ID_ShowGrid, _("Show Grid"), kind=wx.ITEM_CHECK)
+
+
 
         # Canvas menu
         menu_canvas = wx.Menu()
@@ -185,7 +215,8 @@ class App(wx.Frame):
         synfig_menubar.Append(menu_window, _("&Window"))
         synfig_menubar.Append(menu_help, _("&Help"))
 
-        self.Bind(wx.EVT_MENU, self.OnNew, id=ID_New)
+        self.Bind(wx.EVT_MENU, self.OnNew, id=wx.ID_NEW)
+        self.Bind(wx.EVT_MENU, self.OnShowMenubar, id=ID_ShowMenubar)
         self.Bind(wx.EVT_MENU, self.OnAbout, id=ID_HelpAbout)
 
         self.SetMenuBar(synfig_menubar)
@@ -228,3 +259,5 @@ class App(wx.Frame):
     def OnAbout(self, event):
         about = About(self)
         about.show()
+    def OnShowMenubar(self, event):
+        pass
