@@ -10,6 +10,11 @@ Objective of this project
 - Eliminate ETL - use Boost instead.
 - Improve the documentation.
 - Clean-up the synfig source code. Make it tidy.
+- Make synfig extremely easy to build and install on any platform
 
 Roadmap
-- Close the gap between Harmony and Synfig in terms of advanced features for improved productivity.
+- Improve Synfig with advanced features.
+- Make Synfig a viable alternative to other commercial 2D animation softwares.
+
+Entry Point:
+Run synfig-studio/src/wx/gui/main.py
