@@ -17,4 +17,4 @@ Roadmap
 - Make Synfig a viable alternative to other commercial 2D animation softwares.
 
 Entry Point:
-Run synfig-studio/src/wx/gui/main.py
+- Run synfig-studio/src/wx/gui/main.py
