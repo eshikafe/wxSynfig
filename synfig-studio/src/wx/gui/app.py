@@ -22,6 +22,7 @@ import math
 import wx
 import wx.aui
 from dialogs.about import About
+from dialogs.dialog_setup import DialogSetup
 
 
 if sys.platform == 'win32':
@@ -217,6 +218,7 @@ class App(wx.Frame):
 
         self.Bind(wx.EVT_MENU, self.OnNew, id=wx.ID_NEW)
         self.Bind(wx.EVT_MENU, self.OnShowMenubar, id=ID_ShowMenubar)
+        self.Bind(wx.EVT_MENU, self.OnPreferences, id=ID_Preferences)
         self.Bind(wx.EVT_MENU, self.OnAbout, id=ID_HelpAbout)
 
         self.SetMenuBar(synfig_menubar)
@@ -261,3 +263,9 @@ class App(wx.Frame):
         about.show()
     def OnShowMenubar(self, event):
         pass
+
+    def OnPreferences(self, event):
+        pref_dialog = DialogSetup(self, -1)
+        pref_dialog.CenterOnScreen()
+        pref_dialog.ShowModal()
+        pref_dialog.Destroy()
