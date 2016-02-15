@@ -45,6 +45,36 @@ class DialogSetup(wx.Dialog):
         gamma_table = wx.Panel(notebook)
         notebook.AddPage(gamma_table, _("Gamma"))
 
+        vbox = wx.BoxSizer(wx.VERTICAL)
+
+        h1 = wx.BoxSizer(wx.HORIZONTAL)
+        red = wx.StaticText(gamma_table, label="Red")
+        h1.Add(red, 0, wx.ALL, 2)
+        scale_gamma_red = wx.Slider(gamma_table, -1, 2.2, 0.1, 3.0, style=wx.SL_HORIZONTAL|wx.SL_VALUE_LABEL|wx.SL_BOTTOM)
+        scale_gamma_red.SetLineSize(0.1)
+        scale_gamma_red.SetTickFreq(0.1)
+        h1.Add(scale_gamma_red, 1, wx.ALL, 2)
+
+        h2 = wx.BoxSizer(wx.HORIZONTAL)
+        green = wx.StaticText(gamma_table, label="Green")
+        h2.Add(green, 0, wx.ALL)
+        scale_gamma_green = wx.Slider(gamma_table, -1, 2.2, 0.1, 3.0, style=wx.SL_HORIZONTAL|wx.SL_VALUE_LABEL|wx.SL_BOTTOM)
+        scale_gamma_green.SetLineSize(0.1)
+        h2.Add(scale_gamma_green, 1, wx.ALL,2)
+        
+        h3 = wx.BoxSizer(wx.HORIZONTAL)
+        blue = wx.StaticText(gamma_table, label="Blue")
+        h3.Add(blue, 0, wx.ALL)
+        scale_gamma_blue = wx.Slider(gamma_table, -1, 2.2, 0.1, 3.0, style=wx.SL_HORIZONTAL|wx.SL_VALUE_LABEL|wx.SL_BOTTOM)
+        scale_gamma_blue.SetLineSize(0.1)
+        h3.Add(scale_gamma_blue, 1, wx.ALL,2)
+        
+        vbox.Add((10,10), 0, wx.ALIGN_CENTRE)
+        vbox.Add(h1, 0, wx.ALL|wx.EXPAND, 2)
+        vbox.Add(h2, 0, wx.ALL|wx.EXPAND, 2)
+        vbox.Add(h3, 0, wx.ALL|wx.EXPAND, 2)
+        gamma_table.SetSizer(vbox)
+
         # Misc
         misc_table = wx.Panel(notebook)
         notebook.AddPage(misc_table, _("Misc"))
@@ -66,3 +96,6 @@ class DialogSetup(wx.Dialog):
 
         self.SetSizer(vert_sizer)
         self.Layout()
+
+    def on_gamma_r_change(self, event):
+    	pass
