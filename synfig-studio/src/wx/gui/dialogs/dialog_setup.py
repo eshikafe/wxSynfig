@@ -48,25 +48,21 @@ class DialogSetup(wx.Dialog):
         vbox = wx.BoxSizer(wx.VERTICAL)
 
         h1 = wx.BoxSizer(wx.HORIZONTAL)
-        red = wx.StaticText(gamma_table, label="Red")
+        red = wx.StaticText(gamma_table, label="Red  ")
         h1.Add(red, 0, wx.ALL, 2)
-        scale_gamma_red = wx.Slider(gamma_table, -1, 2.2, 0.1, 3.0, style=wx.SL_HORIZONTAL|wx.SL_VALUE_LABEL|wx.SL_BOTTOM)
-        scale_gamma_red.SetLineSize(0.1)
-        scale_gamma_red.SetTickFreq(0.1)
+        scale_gamma_red = FloatSlider(gamma_table, (0.1,3.0,2.2),slidersize=(200,20),slidertextsize=(50,-1))
         h1.Add(scale_gamma_red, 1, wx.ALL, 2)
 
         h2 = wx.BoxSizer(wx.HORIZONTAL)
         green = wx.StaticText(gamma_table, label="Green")
         h2.Add(green, 0, wx.ALL)
-        scale_gamma_green = wx.Slider(gamma_table, -1, 2.2, 0.1, 3.0, style=wx.SL_HORIZONTAL|wx.SL_VALUE_LABEL|wx.SL_BOTTOM)
-        scale_gamma_green.SetLineSize(0.1)
+        scale_gamma_green = FloatSlider(gamma_table, (0.1,3.0,2.2),slidersize=(200,20),slidertextsize=(50,-1))
         h2.Add(scale_gamma_green, 1, wx.ALL,2)
         
         h3 = wx.BoxSizer(wx.HORIZONTAL)
-        blue = wx.StaticText(gamma_table, label="Blue")
+        blue = wx.StaticText(gamma_table, label="Blue  ")
         h3.Add(blue, 0, wx.ALL)
-        scale_gamma_blue = wx.Slider(gamma_table, -1, 2.2, 0.1, 3.0, style=wx.SL_HORIZONTAL|wx.SL_VALUE_LABEL|wx.SL_BOTTOM)
-        scale_gamma_blue.SetLineSize(0.1)
+        scale_gamma_blue = FloatSlider(gamma_table, (0.1,3.0,2.2),slidersize=(200,20),slidertextsize=(50,-1))
         h3.Add(scale_gamma_blue, 1, wx.ALL,2)
         
         vbox.Add((10,10), 0, wx.ALIGN_CENTRE)
@@ -99,3 +95,70 @@ class DialogSetup(wx.Dialog):
 
     def on_gamma_r_change(self, event):
     	pass
+
+class FloatSlider(wx.Panel):
+
+    SliderSize = (30, -1)
+    SliderTextSize = (37, -1)
+
+    def __init__(self, parent, slider_limits,
+                 slidersize=SliderSize,
+                 slidertextsize=SliderTextSize):
+        """Initialize the widget.
+
+        parent          reference to owning widget
+        slider_limits   slider limits (real values)
+        slidersize      tuple controlling slider size
+        slidertextsize  tuple controlling text value size
+
+        Adopted from: https://github.com/rzzzwilson/Random-Stuff/blob/master/float_slider/floatslider.py
+
+        """
+
+        wx.Panel.__init__(self, parent, wx.ID_ANY)
+
+        # unpack limits, set internal state
+        (min_real, max_real, def_real) = slider_limits
+        min_int = self.float2integer(min_real)
+        max_int = self.float2integer(max_real)
+        def_int = self.float2integer(def_real)
+        (def_real_value, def_display) = self.integer2float(def_int)
+
+        # create GUI objects
+        box = wx.BoxSizer(wx.HORIZONTAL)
+        self.txt_value = wx.TextCtrl(self,
+                                     value=def_display,
+                                     size=slidertextsize,
+                                     style=wx.TE_RIGHT|wx.TE_READONLY)
+        
+        self.sl_value = wx.Slider(self, wx.ID_ANY, def_int, min_int, max_int, style=wx.SL_HORIZONTAL)
+        box.Add(self.sl_value, 1, flag=wx.ALIGN_CENTER|wx.EXPAND)
+        box.Add(self.txt_value, 0, flag=wx.LEFT)
+
+        self.SetSizer(box)
+        self.value = def_real_value
+
+        # set handler for change event
+        self.sl_value.Bind(wx.EVT_SLIDER, self.onSliderChange)
+
+    def onSliderChange(self, event):
+        """Handle a change in the slider"""
+
+        # get value of slider, update text field
+        value = self.sl_value.GetValue()
+        (self.value, display) = self.integer2float(value)
+        self.txt_value.SetValue(display)
+
+
+    def integer2float(self, int_value):
+        """integer to float conversion."""
+
+        real_value = float(int(int_value)/100.0)
+        display_value = '%.1f' % real_value
+
+        return (real_value, display_value)
+
+    def float2integer(self, real_value):
+        """float to integer conversion."""
+
+        return int(float(real_value) * 100)
