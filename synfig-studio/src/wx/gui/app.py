@@ -171,7 +171,7 @@ class App(wx.Frame):
         toolbox = self.CreatePanel()
         bmp_tt = wx.Bitmap("../../../images/tool_normal_icon.png", wx.BITMAP_TYPE_PNG)
         self.transform_tool = wx.BitmapButton(toolbox, id = wx.ID_ANY, bitmap = bmp_tt,size = (16, 16))
-        self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().Layer(1).Position(1).CloseButton(False))
+        self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().Layer(0).Position(1).CloseButton(False))
         self._mgr.Update()
 
     def create_animation_control(self):
