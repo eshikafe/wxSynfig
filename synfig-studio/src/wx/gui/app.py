@@ -23,6 +23,7 @@ import wx
 import wx.aui
 from dialogs.about import About
 from dialogs.dialog_setup import DialogSetup
+#from synfigapp.settings import Settings
 
 
 if sys.platform == 'win32':
@@ -149,7 +150,7 @@ class App(wx.Frame):
     def __init__(self, basepath, argc, argv):
         wx.Frame.__init__(self,None, -1, pos=wx.DefaultPosition,size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE |wx.SUNKEN_BORDER |wx.CLIP_CHILDREN)
         self.page_count = 0
-        self.sTitle = "Synfig Studio (Experimental)"
+        self.sTitle = "Synfig-Reloaded"
         self.app_base_path_=os.path.dirname(basepath)
         self.SetTitle(_(self.sTitle))
         self.SetIcon(wx.Icon("synfig_icon.ico"))
@@ -159,9 +160,30 @@ class App(wx.Frame):
         self.Show()
 
     def init_ui_manager(self):
+        self.create_ui_manager()
+        self.create_menubar()
+        self.create_toolbox()
+
+    def create_toolbar(self):
+        pass
+
+    def create_toolbox(self):
+        toolbox = self.CreatePanel()
+        bmp_tt = wx.Bitmap("../../../images/tool_normal_icon.png", wx.BITMAP_TYPE_PNG)
+        self.transform_tool = wx.BitmapButton(toolbox, id = wx.ID_ANY, bitmap = bmp_tt,size = (16, 16))
+        self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().Layer(1).Position(1).CloseButton(False))
+        self._mgr.Update()
+
+    def create_animation_control(self):
+        pass
+
+    def create_ui_manager(self):
         self._mgr = wx.aui.AuiManager()
         self._mgr.SetManagedWindow(self)
         self._perspectives = []
+
+
+    def create_menubar(self):
 
         synfig_menubar = wx.MenuBar()
 
@@ -374,3 +396,25 @@ class App(wx.Frame):
         pref_dialog.Destroy()
     def OnPageClosing(self, event):
         self.SetTitle(_(self.sTitle))
+
+    def restore_default_settings(self):
+        settings = Settings()
+        settings.set_value("pref.distance_system","pt")
+        settings.set_value("pref.use_colorspace_gamma","1")
+        if SINGLE_THREADED:
+            settings.set_value("pref.use_single_threaded","1")
+        settings.set_value("pref.restrict_radius_ducks","1")
+        settings.set_value("pref.resize_imported_images","0")
+        settings.set_value("pref.enable_experimental_features","0")
+        settings.set_value("pref.custom_filename_prefix",DEFAULT_FILENAME_PREFIX)
+        settings.set_value("pref.ui_language", "os_LANG")
+        settings.set_value("pref.preferred_x_size","480")
+        settings.set_value("pref.preferred_y_size","270")
+        settings.set_value("pref.predefined_size",DEFAULT_PREDEFINED_SIZE)
+        settings.set_value("pref.preferred_fps","24.0")
+        settings.set_value("pref.predefined_fps",DEFAULT_PREDEFINED_FPS)
+        settings.set_value("sequence_separator", ".")
+        settings.set_value("navigator_uses_cairo", "0")
+        settings.set_value("workarea_uses_cairo", "0")
+        settings.set_value("pref.enable_mainwin_menubar", "1")
+

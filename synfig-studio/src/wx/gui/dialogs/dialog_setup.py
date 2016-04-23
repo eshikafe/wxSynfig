@@ -18,6 +18,7 @@
 
 import wx
 from general import *
+#from app import App
 
 class DialogSetup(wx.Dialog):
 
@@ -35,7 +36,7 @@ class DialogSetup(wx.Dialog):
         hor_sizer.Add(cancel_button, 0, wx.ALIGN_RIGHT)
         hor_sizer.Add(ok_button, 0, wx.ALIGN_RIGHT)
 
-        #self.Bind(wx.EVT_BUTTON, self.on_restore_pressed, restore_button)
+        self.Bind(wx.EVT_BUTTON, self.on_restore_pressed, restore_button)
         
         # Notebook
         dialog_win = wx.Panel(self)
@@ -95,6 +96,14 @@ class DialogSetup(wx.Dialog):
 
     def on_gamma_r_change(self, event):
     	pass
+    	
+    def hide(self):
+    	self.Show(False)
+
+    def on_restore_pressed(self, event):
+    	App.restore_default_settings()
+    	self.hide()
+
 
 class FloatSlider(wx.Panel):
 
