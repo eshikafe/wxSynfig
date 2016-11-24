@@ -1,5 +1,5 @@
 # synfig-reloaded
-Synfig with Python UI and C/C++ back end
+Synfig with wxPython based GUI
 
 This is an attempt to modernize Synfig with a new UI that is highly intuitive and user-friendly.
 "synfig-studio" will be completely implemented in wxPython.
