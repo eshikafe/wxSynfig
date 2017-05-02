@@ -18,4 +18,12 @@ Roadmap
 Entry Point:
 - Run synfig-studio/src/wx/gui/main.py
 
+# Synfig:
 Official Synfig Repo: https://github.com/synfig/synfig
+
+Synfig is a vector based 2D animation package. It is designed to be
+capable of producing feature-film quality animation. It eliminates the
+need for tweening, preventing the need to hand-draw each frame. synfig
+features spatial and temporal resolution independence (sharp and smooth
+at any resolution or framerate), high dynamic range images, and a
+flexible plugin system.
