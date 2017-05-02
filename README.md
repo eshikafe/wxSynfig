@@ -1,7 +1,7 @@
 # wxSynfig (alias synfig-reloaded)
 wxSynfig is a wxPython port of Synfig Studio
 
-This is an attempt to modernize Synfig with a new UI that is highly intuitive and user-friendly
+This is an attempt to modernize Synfig with a new UI that is highly intuitive and user-friendly.
 "synfig-studio"  is completely reimplemented in Python/Cython using the wxPython framework for the GUI.
 
 Objective of this project
