@@ -1,5 +1,5 @@
-# Beaver
-Vector-based 2D animation made simple
+# Synfig-Reloaded
+wxPython port of Synfig
 
 This is a work in progress 
 
