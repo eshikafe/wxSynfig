@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-# 	File: app.py
-#	Description:
+#   Synfig-Reloaded
+# 	app.py
 #
 #	This package is free software; you can redistribute it and/or
 #	modify it under the terms of the GNU General Public License as

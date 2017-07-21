@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# 
+# -*- coding: utf-8 -*-
+# Synfig-Reloaded
 # about.py
 #
 # Copyright (C) 2017  Austin Aigbe

@@ -2,7 +2,7 @@
 # 
 # main.py
 #
-# Copyright (C) 2017  Austin Aigbe
+# Copyright (C) 2017  Beaver Technologies. Austin Aigbe
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,6 +21,8 @@
 import os
 import sys
 import wx
+#import kivy
+#from kivy.app import App
 
 #import pch
 #import config

@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-# 	File: general.py
-#	Description: General header file for synfigstudio
+#	Synfig-Reloaded
+# 	 general.py
 #
 #	This package is free software; you can redistribute it and/or
 #	modify it under the terms of the GNU General Public License as
@@ -20,7 +19,7 @@ import gettext
 import locale
 
 GETTEXT_PACKAGE = 'myapplication'
-APP_NAME = "wxSynfig"
+APP_NAME = "Synfig-Reloaded"
 
 gettext.install(GETTEXT_PACKAGE)
 
