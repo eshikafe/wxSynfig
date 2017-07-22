@@ -20,21 +20,10 @@
 from general import *
 import sys, os
 
-VERSION = "1.0.2"
-
-if sys.platform[0:3] == 'win':
-	IMAGE_DIR = "share\\pixmaps"
-else:
-	IMAGE_DIR = "/usr/local/share/pixmaps"
-
-IMAGE_EXT = "png"
-
 
 import wx
 import wx.lib.agw.hyperlink as hl
 from wx.lib.wordwrap import wordwrap
-
-cwd = os.getcwd()
 
 class AboutDialog(wx.Dialog):
 	def __init__(self, parent, ID, title, pos=wx.DefaultPosition, size=(420, 350), style=wx.DEFAULT_DIALOG_STYLE):
@@ -47,8 +36,8 @@ class AboutDialog(wx.Dialog):
 		v.Add(v2,0,wx.ALIGN_CENTRE_HORIZONTAL)
 		
 		# Icons
-		self.SetIcon(wx.Icon(cwd + "\synfig_icon.ico"))
-		png = wx.Image(cwd + "\synfig_icon." +IMAGE_EXT, wx.BITMAP_TYPE_PNG).ConvertToBitmap()
+		self.SetIcon(wx.Icon(images_path + "synfig_icon.ico"))
+		png = wx.Image(images_path + "synfig_icon.png", wx.BITMAP_TYPE_PNG).ConvertToBitmap()
 		img = wx.StaticBitmap(self, -1, png)
 
 		# Labels

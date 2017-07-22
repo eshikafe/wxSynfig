@@ -1,6 +1,5 @@
-#
-# 	File: dock_toolbox.py
-#	Description:
+#	Synfig-Reloaded
+# 	dock_toolbox.py
 #
 #	This package is free software; you can redistribute it and/or
 #	modify it under the terms of the GNU General Public License as
@@ -11,13 +10,10 @@
 #	but WITHOUT ANY WARRANTY; without even the implied warranty of
 #	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 #	General Public License for more details.
-#
-#
 
 import wx
-import general
+from general import *
 
-""""
 #include "instance.h"
 #include "app.h"
 #include "canvasview.h"
@@ -29,11 +25,18 @@ import general
 #include "docks/dockdialog.h"
 #include "widgets/widget_defaults.h"
 #include <synfigapp/main.h>
-"""
+
 
 class DockToolbox:
+	def __init__(self, title=_("Toolbox")):
+		self.title = title
+		panel = wx.Panel(self)
+		sizer = wx.GridBagSizer(0,0)
+		bmp = wx.Image("b.bmp", wx.BITMAP_TYPE_PNG).ConvertToBitmap()
+		self.button = wx.BitmapButton(panel,-1, bmp)
+		sizer.Add(self.button, pos=(0,0), flag=wx.EXPAND|wx.ALL, border=5)
 
-
+"""
 Dock_Toolbox::Dock_Toolbox():
 	Dockable("toolbox",_("Toolbox"),Gtk::StockID("synfig-about"))
 {
@@ -318,3 +321,4 @@ Dock_Toolbox::on_drop_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 	// Finish the drag
 	context->drag_finish(success, false, time);
 }
+"""

@@ -17,9 +17,21 @@
 
 import gettext
 import locale
+import os
+#import inspect
 
 GETTEXT_PACKAGE = 'myapplication'
 APP_NAME = "Synfig-Reloaded"
+VERSION = "0.0.1"
+
+gui_path = os.path.dirname(__file__)
+src_path = os.path.dirname(gui_path)
+studio_path = os.path.dirname(src_path)
+
+images_path = os.path.join(studio_path, "images\\")
+
+#__FILE__ = 
+
 
 gettext.install(GETTEXT_PACKAGE)
 

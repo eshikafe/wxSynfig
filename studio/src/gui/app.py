@@ -21,6 +21,7 @@ import sys
 import math
 import wx
 import wx.aui
+import wx.lib.agw.ribbon as RB
 from dialogs.about import About
 from dialogs.dialog_setup import DialogSetup
 #from docks
@@ -34,30 +35,6 @@ if sys.platform == 'win32':
 
 
 from general import *
-
-
-MISC_DIR_PREFERENCE     = "misc_dir"
-ANIMATION_DIR_PREFERENCE    = "animation_dir"
-IMAGE_DIR_PREFERENCE        = "image_dir"
-SKETCH_DIR_PREFERENCE       = "sketch_dir"
-RENDER_DIR_PREFERENCE       = "render_dir"
-
-def DPM2DPI(x):
-    return (float(x)/39.3700787402)
-def DPI2DPM(x):
-    return (float(x)*39.3700787402)
-
-if sys.platform == 'win32':
-    IMAGE_DIR = "share\\pixmaps"
-else:
-    IMAGE_DIR = "/usr/local/share/pixmaps"
-
-IMAGE_EXT = "tif"
-
-if sys.platform == 'win32':
-    PLUGIN_DIR = "share\\synfig\\plugins"
-else:
-    PLUGIN_DIR = "/usr/local/share/synfig/plugins"
 
 ID_MenuOpenRecent = wx.NewId()
 ID_SaveAs = wx.NewId()
@@ -158,7 +135,7 @@ class App(wx.Frame):
         self.sTitle = APP_NAME
         self.app_base_path_=os.path.dirname(basepath)
         self.SetTitle(_(self.sTitle))
-        self.SetIcon(wx.Icon("synfig_icon.ico"))
+        self.SetIcon(wx.Icon(images_path+"synfig_icon.ico"))
 
         # Splash splash_screen;
         # splash_screen.show();
@@ -175,17 +152,10 @@ class App(wx.Frame):
         #self.create_ribbon_ui()
         self.create_menubar()
         self.create_toolbox()
+        self.create_work_area()
 
     def create_toolbar(self):
         pass
-
-    def create_toolbox(self):
-        toolbox = self.CreatePanel()
-        #toolbox.SetBackgroundColour("Dark Grey")
-        bmp_tt = wx.Bitmap("../../../images/tool_normal_icon.png", wx.BITMAP_TYPE_PNG)
-        self.transform_tool = wx.BitmapButton(toolbox, id = wx.ID_ANY, bitmap = bmp_tt,size = (16, 16))
-        self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().Layer(1).Position(1).CloseButton(False))
-        self._mgr.Update()
 
     def create_animation_control(self):
         pass
@@ -196,8 +166,6 @@ class App(wx.Frame):
         self._perspectives = []
 
     def create_ribbon_ui(self):
-        import wx.lib.agw.ribbon as RB
-
         panel = wx.Panel(self)
         self._ribbon = RB.RibbonBar(panel, wx.ID_ANY, agwStyle=RB.RIBBON_BAR_DEFAULT_STYLE|RB.RIBBON_BAR_SHOW_PANEL_EXT_BUTTONS)
         home = RB.RibbonPage(self._ribbon, wx.ID_ANY, "Home")
@@ -217,21 +185,51 @@ class App(wx.Frame):
 
     def create_menubar(self):
 
-        synfig_menubar = wx.MenuBar()
+        app_menubar = wx.MenuBar()
 
         # File menu
         menu_file = wx.Menu()
-        menu_file.Append(wx.ID_NEW,_("New\tCtrl+N"))
-        menu_file.Append(wx.ID_OPEN, _("Open\tCtrl+O"))
-        menu_open_recent = wx.Menu()
-        menu_file.AppendMenu(ID_MenuOpenRecent,_("Open Recent"), menu_open_recent)
+        menu_file_new = wx.MenuItem(menu_file, wx.ID_NEW, text=_("New\tCtrl+N"), kind=wx.ITEM_NORMAL)
+        menu_file_new.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_NEW, wx.ART_MENU))
+        menu_file.AppendItem(menu_file_new)
+
+        #menu_file.Append(wx.ID_NEW,_("New\tCtrl+N"))
+        #menu_file.Append(wx.ID_OPEN, _("Open\tCtrl+O"))
+        menu_file_open = wx.MenuItem(menu_file, wx.ID_OPEN, text=_("Open\tCtrl+O"), kind=wx.ITEM_NORMAL)
+        menu_file_open.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_OPEN, wx.ART_MENU))
+        menu_file.AppendItem(menu_file_open)
+
+        #menu_open_recent = wx.Menu()
+        #menu_file.AppendMenu(ID_MenuOpenRecent,_("Open Recent"), menu_open_recent)
         menu_file.AppendSeparator()
-        menu_file.Append(wx.ID_SAVE, _("Save\tCtrl+S"))
-        menu_file.Append(ID_SaveAs, _("Save As...\tShift+Ctrl+S"))
-        menu_file.Append(ID_SaveAll, _("Save All"))
-        menu_file.Append(ID_Revert, _("Revert"))
+
+        #menu_file.Append(wx.ID_SAVE, _("Save\tCtrl+S"))
+        menu_file_save = wx.MenuItem(menu_file, wx.ID_SAVE, text=_("Save\tCtrl+S"), kind=wx.ITEM_NORMAL)
+        menu_file_save.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE, wx.ART_MENU))
+        menu_file.AppendItem(menu_file_save)
+
+        #menu_file.Append(ID_SaveAs, _("Save As...\tShift+Ctrl+S"))
+        menu_file_save_as = wx.MenuItem(menu_file, ID_SaveAs, text=_("Save As...\tShift+Ctrl+S"), kind=wx.ITEM_NORMAL)
+        menu_file_save_as.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
+        menu_file.AppendItem(menu_file_save_as)
+
+        #menu_file.Append(ID_SaveAll, _("Save All"))
+        menu_file_save_all = wx.MenuItem(menu_file, ID_SaveAll, text=_("Save All"), kind=wx.ITEM_NORMAL)
+        menu_file_save_all.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
+        menu_file.AppendItem(menu_file_save_all)
+
+        #menu_file.Append(ID_Revert, _("Revert"))
+        menu_file_revert = wx.MenuItem(menu_file, ID_Revert, text=_("Revert"), kind=wx.ITEM_NORMAL)
+        menu_file_revert.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
+        menu_file.AppendItem(menu_file_revert)
+        
         menu_file.AppendSeparator()
-        menu_file.Append(ID_Import, _("Import\tCtrl+I"))
+
+        #menu_file.Append(ID_Import, _("Import\tCtrl+I"))
+        menu_file_import = wx.MenuItem(menu_file, ID_Import, text=_("Import\tCtrl+I"), kind=wx.ITEM_NORMAL)
+        menu_file_import.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
+        menu_file.AppendItem(menu_file_import)
+
         menu_file.AppendSeparator()
         menu_file.Append(ID_Preview, _("Preview\tF11"))
         menu_file.Append(ID_Render, _("Render\tF9"))
@@ -302,6 +300,23 @@ class App(wx.Frame):
         menu_view.Append(ID_SeekToBegin, _("Seek to Begin\tHome"))
         menu_view.Append(ID_SeekToEnd, _("Seek to End\tEnd"))
 
+        # Insert
+        menu_insert = wx.Menu()
+
+        # Modify
+        menu_modify = wx.Menu()
+
+        # Text
+        menu_text = wx.Menu()
+
+        # Commands
+        menu_commands = wx.Menu()
+
+        # Control
+        menu_control = wx.Menu()
+
+        # Debug
+        menu_debug = wx.Menu()
 
 
         # Canvas menu
@@ -361,30 +376,112 @@ class App(wx.Frame):
         menu_help.AppendSeparator()
         menu_help.Append(ID_HelpAbout, _("About " + APP_NAME))
 
-        synfig_menubar.Append(menu_file, _("&File"))
-        synfig_menubar.Append(menu_edit, _("&Edit"))
-        synfig_menubar.Append(menu_view, _("&View"))
-        synfig_menubar.Append(menu_canvas, _("&Canvas"))
-        synfig_menubar.Append(menu_toolbox, _("Toolbox"))
-        synfig_menubar.Append(menu_layer, _("&Layer"))
-        synfig_menubar.Append(menu_plugins, _("Plug-Ins"))
-        synfig_menubar.Append(menu_window, _("&Window"))
-        synfig_menubar.Append(menu_help, _("&Help"))
+        app_menubar.Append(menu_file, _("&File"))
+        app_menubar.Append(menu_edit, _("&Edit"))
+        app_menubar.Append(menu_view, _("&View"))
+        app_menubar.Append(menu_insert, _("&Insert"))
+        app_menubar.Append(menu_modify, _("&Modify"))
+        app_menubar.Append(menu_text, _("&Text"))
+        app_menubar.Append(menu_commands, _("&Commands"))
+        app_menubar.Append(menu_control, _("C&ontrol"))
+        app_menubar.Append(menu_debug, _("&Debug"))
+        app_menubar.Append(menu_canvas, _("&Canvas"))
+        #app_menubar.Append(menu_toolbox, _("Toolbox"))
+        app_menubar.Append(menu_layer, _("&Layer"))
+        app_menubar.Append(menu_plugins, _("Plug-Ins"))
+        app_menubar.Append(menu_window, _("&Window"))
+        app_menubar.Append(menu_help, _("&Help"))
 
         self.Bind(wx.EVT_MENU, self.OnNew, id=wx.ID_NEW)
         self.Bind(wx.EVT_MENU, self.OnShowMenubar, id=ID_ShowMenubar)
         self.Bind(wx.EVT_MENU, self.OnPreferences, id=ID_Preferences)
         self.Bind(wx.EVT_MENU, self.OnAbout, id=ID_HelpAbout)
 
-        self.SetMenuBar(synfig_menubar)
+        self.SetMenuBar(app_menubar)
 
+    def create_toolbox(self):
+        toolbox = self.CreatePanel()
+        toolbox_sizer = wx.GridBagSizer(0,0)
+        
+        bmp_transform = wx.Bitmap(images_path+"tool_normal_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_smooth_move = wx.Bitmap(images_path+"tool_smooth_move_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_scale = wx.Bitmap(images_path+"tool_scale_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_rotate = wx.Bitmap(images_path+"tool_rotate_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_mirror = wx.Bitmap(images_path+"tool_mirror_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_circle = wx.Bitmap(images_path+"tool_circle_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_rectangle = wx.Bitmap(images_path+"tool_rectangle_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_star = wx.Bitmap(images_path+"tool_star_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_polygon = wx.Bitmap(images_path+"tool_polyline_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_gradient = wx.Bitmap(images_path+"tool_gradient_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_spline = wx.Bitmap(images_path+"tool_spline_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_draw = wx.Bitmap(images_path+"tool_draw_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_cutout = wx.Bitmap(images_path+"tool_cutout_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_width = wx.Bitmap(images_path+"tool_width_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_fill = wx.Bitmap(images_path+"tool_fill_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_eyedrop = wx.Bitmap(images_path+"tool_eyedrop_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_text = wx.Bitmap(images_path+"tool_text_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_sketch = wx.Bitmap(images_path+"tool_sketch_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_brush = wx.Bitmap(images_path+"tool_brush_icon.png", wx.BITMAP_TYPE_PNG)
+        bmp_zoom = wx.Bitmap(images_path+"tool_zoom_icon.png", wx.BITMAP_TYPE_PNG)
+
+
+        self.transform_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_transform, size=(32,32), style=wx.NO_BORDER)
+        self.transform_tool.SetToolTip(wx.ToolTip(_("Tranform tool")))
+        self.smooth_move_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_smooth_move,size=(32,32), style=wx.NO_BORDER)
+        self.scale_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_scale, size=(32,32), style=wx.NO_BORDER)
+        self.rotate_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_rotate, size=(32,32), style=wx.NO_BORDER)
+        self.mirror_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_mirror, size=(32,32), style=wx.NO_BORDER)
+        self.circle_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_circle, size=(32,32), style=wx.NO_BORDER)
+        self.rectangle_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_rectangle, size=(32,32), style=wx.NO_BORDER)
+        self.star_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_star, size=(32,32), style=wx.NO_BORDER)
+        self.polygon_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_polygon, size=(32,32), style=wx.NO_BORDER)
+        self.gradient_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_gradient, size=(32,32), style=wx.NO_BORDER)
+        self.spline_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_spline, size=(32,32), style=wx.NO_BORDER)
+        self.draw_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_draw, size=(32,32), style=wx.NO_BORDER)
+        self.cutout_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_cutout, size=(32,32), style=wx.NO_BORDER)
+        self.width_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_width, size=(32,32), style=wx.NO_BORDER)
+        self.fill_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_fill, size=(32,32), style=wx.NO_BORDER)
+        self.eyedrop_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_eyedrop, size=(32,32), style=wx.NO_BORDER)
+        self.text_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_text, size=(32,32), style=wx.NO_BORDER)
+        self.sketch_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_sketch, size=(32,32), style=wx.NO_BORDER)
+        self.brush_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_brush, size=(32,32), style=wx.NO_BORDER)
+        self.zoom_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_zoom, size=(32,32), style=wx.NO_BORDER)
+
+        toolbox_sizer.Add(self.transform_tool, pos=(0,0), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.smooth_move_tool, pos=(0,1), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.scale_tool, pos=(0,2), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.rotate_tool, pos=(1,0), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.mirror_tool, pos=(1,1), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.circle_tool, pos=(1,2), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.rectangle_tool, pos=(2,0), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.star_tool, pos=(2,1), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.polygon_tool, pos=(2,2), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.gradient_tool, pos=(3,0), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.spline_tool, pos=(3,1), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.draw_tool, pos=(3,2), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.cutout_tool, pos=(4,0), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.width_tool, pos=(4,1), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.fill_tool, pos=(4,2), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.eyedrop_tool, pos=(5,0), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.text_tool, pos=(5,1), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.sketch_tool, pos=(5,2), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.brush_tool, pos=(6,0), flag=wx.EXPAND|wx.ALL)
+        toolbox_sizer.Add(self.zoom_tool, pos=(6,1), flag=wx.EXPAND|wx.ALL)
+
+
+        toolbox.SetSizerAndFit(toolbox_sizer)
+
+        self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().Layer(1).Position(1).CloseButton(False))
+        self._mgr.Update()        
+
+    def create_work_area(self):
         self.panel = self.CreatePanel()
         #self.panel.SetBackgroundColour("Dark Grey")
         self._mgr.AddPane(self.panel, wx.aui.AuiPaneInfo().Name("work-area").CenterPane())
 
         # Notebook
         self.nb = wx.aui.AuiNotebook(self.panel)
-        self.NewAnimationPage()
+        self.create_new_stage()
 
         self.Bind(wx.aui.EVT_AUINOTEBOOK_PAGE_CHANGED, self.OnPageSelected)
         self.Bind(wx.aui.EVT_AUINOTEBOOK_PAGE_CLOSED, self.OnPageClosing)
@@ -396,8 +493,8 @@ class App(wx.Frame):
         all_panes = self._mgr.GetAllPanes()
 
         self._mgr.GetPane("work-area").Show()
+        self._mgr.Update() 
         #darkMode.darkMode(self.panel, self.panel.GetBackgroundColour())
-
 
     def CreatePanel(self):
         pnl = wx.Panel(self, -1)
@@ -407,17 +504,17 @@ class App(wx.Frame):
         text = self.nb.GetPageText(self.nb.GetSelection())
         self.SetTitle(_(self.sTitle + " " + text))
 
-    def NewAnimationPage(self):
+    def create_new_stage(self):
         self.page_count = self.page_count + 1
         title = "Untitled-" + str(self.page_count)
-        p = self.CreatePanel()
+        panel = self.CreatePanel()
         #p.SetBackgroundColour("Dark Grey")
-        self.nb.AddPage(p,title)
+        self.nb.AddPage(panel,title)
         self.SetTitle(_(self.sTitle + " " + title))
         #self.nb.SetBackgroundColour('Dark Grey')
 
     def OnNew(self, event):
-        self.NewAnimationPage()
+        self.create_new_stage()
 
     def OnAbout(self, event):
         about = About(self)
