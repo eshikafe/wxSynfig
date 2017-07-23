@@ -1,6 +1,6 @@
 Synfig-Reloaded
 ====================
-wxPython port of Synfig with a focus on stability, simplicity and platform nativity.
+wxPython port of Synfig with a focus on performance, stability, simplicity and platform nativity.
 
 Development Strategy
 --------------------
@@ -9,7 +9,8 @@ Development Strategy
 - Speed up computationally intensive routines with Cython.
 - Simplify the GUI and make it as intuitive as possible.
 - Port mypaint brush library to Cython.
-- Only use Swig for C/C++ libraries only where there's no performance improvement over Cython. 
+- Use Swig for C/C++ libraries only where there's no performance improvement over Cython.
+- Use existing Python ports where applicable.
 
 Dependencies
 --------------
