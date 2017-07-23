@@ -12,6 +12,11 @@ Development Strategy
 - Use Swig for C/C++ libraries only where there's no performance improvement over Cython.
 - Use existing Python ports where applicable.
 
+Philosophy
+------------
+- Optimizing a bad algorithm with a fast language is worse than using a good algorithm and a slow language.
+  - http://notes-on-cython.readthedocs.io/en/latest/fibo_speed.html
+
 Dependencies
 --------------
 - Python 2.7.10
