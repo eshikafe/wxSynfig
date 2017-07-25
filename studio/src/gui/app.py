@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#   Synfig-Reloaded
-# 	app.py
+#   Synfig-Reloaded: app.py
 #
 #	This package is free software; you can redistribute it and/or
 #	modify it under the terms of the GNU General Public License as
@@ -13,7 +12,7 @@
 #	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 #	General Public License for more details.
 #
-#
+#   Copyright (C) 2017 Austin Aigbe
 
 
 import os
@@ -215,19 +214,19 @@ class App(wx.Frame):
 
         #menu_file.Append(ID_SaveAll, _("Save All"))
         menu_file_save_all = wx.MenuItem(menu_file, ID_SaveAll, text=_("Save All"), kind=wx.ITEM_NORMAL)
-        menu_file_save_all.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
+        #menu_file_save_all.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
         menu_file.AppendItem(menu_file_save_all)
 
         #menu_file.Append(ID_Revert, _("Revert"))
         menu_file_revert = wx.MenuItem(menu_file, ID_Revert, text=_("Revert"), kind=wx.ITEM_NORMAL)
-        menu_file_revert.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
+        #menu_file_revert.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
         menu_file.AppendItem(menu_file_revert)
         
         menu_file.AppendSeparator()
 
         #menu_file.Append(ID_Import, _("Import\tCtrl+I"))
         menu_file_import = wx.MenuItem(menu_file, ID_Import, text=_("Import\tCtrl+I"), kind=wx.ITEM_NORMAL)
-        menu_file_import.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
+        #menu_file_import.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
         menu_file.AppendItem(menu_file_import)
 
         menu_file.AppendSeparator()
@@ -379,12 +378,12 @@ class App(wx.Frame):
         app_menubar.Append(menu_file, _("&File"))
         app_menubar.Append(menu_edit, _("&Edit"))
         app_menubar.Append(menu_view, _("&View"))
-        app_menubar.Append(menu_insert, _("&Insert"))
-        app_menubar.Append(menu_modify, _("&Modify"))
-        app_menubar.Append(menu_text, _("&Text"))
-        app_menubar.Append(menu_commands, _("&Commands"))
-        app_menubar.Append(menu_control, _("C&ontrol"))
-        app_menubar.Append(menu_debug, _("&Debug"))
+        #app_menubar.Append(menu_insert, _("&Insert"))
+        #app_menubar.Append(menu_modify, _("&Modify"))
+        #app_menubar.Append(menu_text, _("&Text"))
+        #app_menubar.Append(menu_commands, _("&Commands"))
+        #app_menubar.Append(menu_control, _("C&ontrol"))
+        #app_menubar.Append(menu_debug, _("&Debug"))
         app_menubar.Append(menu_canvas, _("&Canvas"))
         #app_menubar.Append(menu_toolbox, _("Toolbox"))
         app_menubar.Append(menu_layer, _("&Layer"))

@@ -3,4 +3,4 @@ from libc.math cimport *
 from libc.string cimport *
 
 
-cdef class Brush:
+class Brush:

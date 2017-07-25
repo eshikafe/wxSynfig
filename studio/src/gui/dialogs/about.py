@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
-# Synfig-Reloaded
-# about.py
+#   Synfig-Reloaded: about.py
 #
-# Copyright (C) 2017  Austin Aigbe
+#	This package is free software; you can redistribute it and/or
+#	modify it under the terms of the GNU General Public License as
+#	published by the Free Software Foundation; either version 2 of
+#	the License, or (at your option) any later version.
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+#	This package is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#	General Public License for more details.
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
+#   Copyright (C) 2017 Austin Aigbe
 
 from general import *
 import sys, os
@@ -188,7 +184,7 @@ class About(AboutDialog):
 	def __init__(self, parent,ID=-1,title="About " + APP_NAME):
 		AboutDialog.__init__(self,parent,ID,title)
 		self.set_program_name(APP_NAME + " - a wxPython port of Synfig Studio")
-		self.set_version(VERSION)
+		self.set_version("Version: " + VERSION + ", Python: " + sys.version[0:6] + ", wx: " + wx.version())
 		self.set_comment("2D vector animation studio")
 		self.set_website("http://synfig.org/")
 		self.set_copyright("Copyright 2001-2013\nRobert B. Quattlebaum Jr.,\nAdrian Bentley and Synfig contributors")
@@ -208,7 +204,7 @@ class About(AboutDialog):
 		self.set_license(license)
 
 		authors = []
-		authors.append("Original developers:")
+		authors.append("Original developers of Synfig:")
 		authors.append("")
 		authors.append("Robert B. Quattlebaum Jr (darco)")
 		authors.append("Adrian Bentley")

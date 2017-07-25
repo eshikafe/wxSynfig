@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#	Synfig-Reloaded
-# 	 general.py
+#	Synfig-Reloaded: general.py
 #
 #	This package is free software; you can redistribute it and/or
 #	modify it under the terms of the GNU General Public License as
@@ -13,7 +10,7 @@
 #	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 #	General Public License for more details.
 #
-# Author: Austin Aigbe <eshikafe@gmail.com>
+#   Copyright (C) 2017 Austin Aigbe
 
 import gettext
 import locale
