@@ -12,7 +12,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 # General Public License for more details.
 #
-#  Based on mapping.c
+#  Based on mapping.hpp
 #  brushlib - The MyPaint Brush Library. Copyright (C) 2007-2008 Martin Renold <martinxyz@gmx.ch>
 #
 
