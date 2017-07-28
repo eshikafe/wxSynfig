@@ -1,6 +1,6 @@
 # Synfig-Reloaded: mapping.pyx
 # 
-# Copyright (C) 2017 Austin Aigbe
+# Copyright (C) 2017 Aigbe Research
 # 
 # This package is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -30,13 +30,17 @@ cdef class Mapping:
   cdef ControlPoints *points_list
   cdef int inputs_used
   cdef float base_value
+  cdef int inputs
 
-  def __init__(self, int input_):
-    self.inputs = input_
-    points_list = <ControlPoints*> malloc(sizeof(ControlPoints)*input_) # one for each input
+  def __cinit__(self):
+    self.points_list = NULL
+
+  def __init__(self, int inputs_):
+    self.inputs = inputs = inputs_
+    self.points_list = <ControlPoints*> malloc(sizeof(ControlPoints)*input_) # one for each input
 
     cdef int i = 0
-    for i in range(input_):
+    for i in range(inputs_):
       points_list[i].n = 0
 
     self.inputs_used = 0
