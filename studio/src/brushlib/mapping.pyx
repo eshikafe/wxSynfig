@@ -37,11 +37,11 @@ cdef class Mapping:
 
   def __init__(self, int inputs_):
     self.inputs = inputs = inputs_
-    self.points_list = <ControlPoints*> malloc(sizeof(ControlPoints)*input_) # one for each input
+    self.points_list = <ControlPoints*> malloc(sizeof(ControlPoints)*inputs_) # one for each input
 
     cdef int i = 0
     for i in range(inputs_):
-      points_list[i].n = 0
+      self.points_list[i].n = 0
 
     self.inputs_used = 0
     self.base_value = 0
@@ -62,7 +62,7 @@ cdef class Mapping:
       self.inputs_used = self.inputs_used - 1
 
     assert(self.inputs_used >= 0)
-    assert(self.inputs_used <= inputs)
+    assert(self.inputs_used <= self.inputs)
 
     p.n = n
 
