@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#   Synfig-Reloaded: about.py
+#   wxSynfig: about.py
 #
 #	This package is free software; you can redistribute it and/or
 #	modify it under the terms of the GNU General Public License as
@@ -204,6 +204,10 @@ class About(AboutDialog):
 		self.set_license(license)
 
 		authors = []
+		authors.append("wxSynfig:")
+		authors.append("")
+		authors.append("Austin Aigbe")
+		authors.append("")
 		authors.append("Original developers of Synfig:")
 		authors.append("")
 		authors.append("Robert B. Quattlebaum Jr (darco)")

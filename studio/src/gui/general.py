@@ -18,7 +18,7 @@ import os
 #import inspect
 
 GETTEXT_PACKAGE = 'myapplication'
-APP_NAME = "Synfig-Reloaded"
+APP_NAME = "wxSynfig"
 VERSION = "0.0.1"
 
 gui_path = os.path.dirname(__file__)
