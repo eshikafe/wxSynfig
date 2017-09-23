@@ -1,4 +1,4 @@
-Synfig-Reloaded
+wxSynfig
 ====================
 wxPython port of Synfig with a focus on performance, stability, simplicity and platform nativity.
 
