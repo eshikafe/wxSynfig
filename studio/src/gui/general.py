@@ -10,7 +10,8 @@
 #	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 #	General Public License for more details.
 #
-#   Copyright (C) 2017 Austin Aigbe
+#  wxSynfig: Copyright (c) 2017 Austin Aigbe
+#  Synfig: Copyright (c) 2002 Robert B. Quattlebaum Jr.
 
 import gettext
 import locale

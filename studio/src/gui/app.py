@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#   Synfig-Reloaded: app.py
+#   wxSynfig: app.py
 #
 #	This package is free software; you can redistribute it and/or
 #	modify it under the terms of the GNU General Public License as
@@ -12,7 +12,14 @@
 #	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 #	General Public License for more details.
 #
-#   Copyright (C) 2017 Austin Aigbe
+#  wxSynfig/app.py: Copyright (c) 2017 Austin Aigbe
+#  
+#  Synfig/app.cpp:  Copyright (c) 2002-2005 Robert B. Quattlebaum Jr., Adrian Bentley
+#                   Copyright (c) 2007, 2008 Chris Moore
+#                   Copyright (c) 2008 Gerald Young
+#                   Copyright (c) 2008, 2010-2013 Carlos López
+#                   Copyright (c) 2009, 2011 Nikita Kitaev
+#                   Copyright (c) 2012-2015 Konstantin Dmitriev
 
 
 import os
