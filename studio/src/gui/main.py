@@ -15,8 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 # 
-#  wxSynfig: Copyright (c) 2017 Austin Aigbe
-#  Synfig: Copyright (c) 2002 Robert B. Quattlebaum Jr.
+#  wxSynfig/main.py: 	Copyright (c) 2017 Austin Aigbe
+#  
+#  Synfig/main.cpp: 	Copyright (c) 2002-2005 Robert B. Quattlebaum Jr., Adrian Bentley
+#  						Copyright (c) 2007, 2008 Chris Moore
 
 
 import os
