@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 #
 # 	File: dialog_setup.py
-#	Description:
 #
 #	This package is free software; you can redistribute it and/or
 #	modify it under the terms of the GNU General Public License as
@@ -13,6 +12,13 @@
 #	but WITHOUT ANY WARRANTY; without even the implied warranty of
 #	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 #	General Public License for more details.
+#    
+#    
+#    wxSynfig/dialog_setup.py: Copyright (c) 2017 Austin Aigbe
+#    
+#    Synfig/dialog_setup.cpp:   Copyright (c) 2002-2005 Robert B. Quattlebaum Jr., Adrian Bentley
+#                               Copyright (c) 2007, 2008 Chris Moore
+#                               Copyright (c) 2008, 2009. 2012 Carlos López
 #
 
 import wx
