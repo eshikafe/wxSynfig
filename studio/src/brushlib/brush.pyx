@@ -1,32 +1,35 @@
-/* brushlib - The MyPaint Brush Library
- * Copyright (C) 2007-2011 Martin Renold <martinxyz@gmx.ch>
- *
- * Permission to use, copy, modify, and/or distribute this software for any
- * purpose with or without fee is hereby granted, provided that the above
- * copyright notice and this permission notice appear in all copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
- * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
- * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- */
+# brushlib - The MyPaint Brush Library
+#  Copyright (C) 2007-2011 Martin Renold <martinxyz@gmx.ch>
+# 
+#  Permission to use, copy, modify, and/or distribute this software for any
+#  purpose with or without fee is hereby granted, provided that the above
+#  copyright notice and this permission notice appear in all copies.
+# 
+#  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+#  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+#  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+#  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+#  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+#  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+# 
 
 #include <stdio.h>
+from libc.stdlib cimport *
+from libc.math cimport *
+
 #include <string.h>
 #include <glib.h>
-#include <math.h>
-//#include "Python.h"
 
-#include "brushsettings.hpp"
-#include "mapping.hpp"
+from brushsettings import *
+from mapping cimport *
 
-#define ACTUAL_RADIUS_MIN 0.2
-#define ACTUAL_RADIUS_MAX 800 // safety guard against radius like 1e20 and against rendering overload with unexpected brush dynamics
 
-/* The Brush class stores two things:
+ACTUAL_RADIUS_MIN = 0.2
+ACTUAL_RADIUS_MAX = 800 # safety guard against radius like 1e20 and against rendering overload with unexpected brush dynamics
+
+"""
+ The Brush class stores two things:
    b) settings: constant during a stroke (eg. size, spacing, dynamics, color selected by the user)
    a) states: modified during a stroke (eg. speed, smudge colors, time/distance to next dab, position filter states)
 
@@ -38,13 +41,15 @@
    brush" which does the cursor tracking, and the "brushlist" where
    the states are ignored. When a brush is selected, its settings are
    copied into the global one, leaving the state intact.
- */
+""" 
 
-namespace brushlib {
+#namespace brushlib {
 
-class Brush {
-public:
-  bool print_inputs; // debug menu
+class Brush:
+
+  def __init__(self):
+    self.print_inputs = False # debug menu
+ 
   // for stroke splitting (undo/redo)
   double stroke_total_painting_time;
   double stroke_current_idling_time; 

@@ -1,4 +1,4 @@
-# Synfig-Reloaded: mapping.pyx
+# wxSynfig: mapping.pyx
 # 
 # Copyright (C) 2017 Aigbe Research
 # 
