@@ -11,7 +11,10 @@ Development Strategy
 - Port mypaint brush library to Cython.
 - Use Swig for C/C++ libraries only where there's no performance improvement over Cython.
 - Use existing Python ports where applicable.
-- Add publication to HTML5 Canvas and WebGL
+
+Roadmap
+--------
+- Publication to HTML5 Canvas and WebGL
 
 Philosophy
 ------------
