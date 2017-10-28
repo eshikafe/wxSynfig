@@ -26,7 +26,7 @@ gui_path = os.path.dirname(__file__)
 src_path = os.path.dirname(gui_path)
 studio_path = os.path.dirname(src_path)
 
-images_path = os.path.join(studio_path, "images\\")
+images_path = os.path.join(studio_path, "images//")
 
 #__FILE__ = 
 
