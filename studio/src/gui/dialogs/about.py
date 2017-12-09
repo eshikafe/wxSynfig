@@ -160,7 +160,7 @@ class AboutDialog(wx.Dialog):
 		t = ""
 		for i in authors:
 			t = t + i + "\n\t\t\t"
-		t = "\t\tCreated by " + t
+		t = "\t\t " + t
 		self.authors = t
 		self.credits_txt.SetValue(self.authors)
 		font = wx.Font(8, wx.DEFAULT, wx.NORMAL, wx.NORMAL, False, "Arial")
@@ -204,7 +204,7 @@ class About(AboutDialog):
 		self.set_license(license)
 
 		authors = []
-		authors.append("wxSynfig:")
+		authors.append("wxSynfig Developer:")
 		authors.append("")
 		authors.append("Austin Aigbe")
 		authors.append("")
