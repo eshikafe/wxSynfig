@@ -28,10 +28,29 @@ import math
 import wx
 import wx.aui
 import wx.lib.agw.ribbon as RB
+import wx.lib.agw.hyperlink as hl
+
+#from synfig import loadcanvas
+#from synfig import savecanvas
+#from synfig import importer
+#from synfig import filesystemnative
+#from synfig import filesystemgroup
+#from synfig import filecontainertemporary
+
 from dialogs.about import About
 from dialogs.dialog_setup import DialogSetup
-#from docks
+#from dialogs.dialog_gradient import *
+#from dialogs.dialog_input import *
+#from dialogs.dialog_color import *
+#from docks.dock_toolbox import *
+
+#from docks import dockmanager
+
+#from states import state_eyedrop
+
 #from synfigapp.settings import Settings
+
+from general import *
 
 
 if sys.platform == 'win32':
@@ -39,8 +58,20 @@ if sys.platform == 'win32':
     WINVER = 0x0500
     SINGLE_THREADED = 1
 
+MISC_DIR_PREFERENCE = "misc_dir"
+ANIMATION_DIR_PREFERENCE = "animation_dir"
+IMAGE_DIR_PREFERENCE = "image_dir"
+SKETCH_DIR_PREFERENCE = "sketch_dir"
+RENDER_DIR_PREFERENCE = "render_dir"
 
-from general import *
+def DPM2DPI(x):
+    return float(x)/39.3700787402
+def DPI2DPM(x):
+    return float(x)*39.3700787402
+
+IMAGE_DIR = images_path
+PLUGIN_DIR = ""
+
 
 ID_MenuOpenRecent = wx.NewId()
 ID_SaveAs = wx.NewId()
@@ -401,7 +432,14 @@ class App(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnNew, id=wx.ID_NEW)
         self.Bind(wx.EVT_MENU, self.OnShowMenubar, id=ID_ShowMenubar)
         self.Bind(wx.EVT_MENU, self.OnPreferences, id=ID_Preferences)
-        self.Bind(wx.EVT_MENU, self.OnAbout, id=ID_HelpAbout)
+
+        self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_Help)
+        self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpTutorials)
+        self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpReference)
+        self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpFAQ)
+        self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpSupport)
+        self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpAbout)
+
 
         self.SetMenuBar(app_menubar)
 
@@ -432,7 +470,7 @@ class App(wx.Frame):
 
 
         self.transform_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_transform, size=(32,32), style=wx.NO_BORDER)
-        self.transform_tool.SetToolTip(wx.ToolTip(_("Tranform tool")))
+        self.transform_tool.SetToolTip(wx.ToolTip(_("Tranform Tool")))
         self.smooth_move_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_smooth_move,size=(32,32), style=wx.NO_BORDER)
         self.scale_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_scale, size=(32,32), style=wx.NO_BORDER)
         self.rotate_tool = wx.BitmapButton(toolbox, id=wx.ID_ANY, bitmap=bmp_rotate, size=(32,32), style=wx.NO_BORDER)
@@ -477,13 +515,53 @@ class App(wx.Frame):
 
         toolbox.SetSizerAndFit(toolbox_sizer)
 
+        # Toolbox Pane
         self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().Layer(1).Position(1).CloseButton(False))
+        
+        self.p1 = self.CreatePanel()
+        self.windows = wx.aui.AuiNotebook(self.p1)
+        self.keyframe = self.CreatePanel()
+        self.parameters = self.CreatePanel()
+        self.graphs = self.CreatePanel()
+        self.library = self.CreatePanel()
+        self.canvas_meta_data = self.CreatePanel()
+        self.windows.AddPage(self.parameters, "Parameters")
+        self.windows.AddPage(self.keyframe, "Keyframes")
+        self.windows.AddPage(self.graphs, "Graphs")
+        self.windows.AddPage(self.canvas_meta_data, "Canvas MetaData")
+        self.windows.AddPage(self.library, "Library")
+
+        self.p2 = self.CreatePanel()
+        self.w = wx.aui.AuiNotebook(self.p2)
+        self.canvas_browser = self.CreatePanel()
+        self.navigator = self.CreatePanel()
+        self.info = self.CreatePanel()
+        self.palette_editor = self.CreatePanel()
+        self.w.AddPage(self.canvas_browser, "Canvas Browser")
+        self.w.AddPage(self.navigator, "Navigator")
+        self.w.AddPage(self.info, "Info")
+        self.w.AddPage(self.palette_editor, "Palete Editor")
+
+        sz = wx.BoxSizer()
+        sz.Add(self.windows,2,wx.EXPAND)
+        self.p1.SetSizer(sz)
+
+        sz2 = wx.BoxSizer()
+        sz2.Add(self.w,2,wx.EXPAND)
+        self.p2.SetSizer(sz2)
+
+
+        self._mgr.AddPane(self.p1, wx.aui.AuiPaneInfo().Name("other").Bottom().Layer(1).Position(1).CloseButton(True).CaptionVisible(False).Dockable(True).Floatable(True))
+        #self._mgr.AddPane(self.p2, wx.aui.AuiPaneInfo().Name("other2").Bottom().Layer(1).Position(1).CloseButton(True).CaptionVisible(False).Dockable(True).Floatable(True))
+        self._mgr.AddPane(self.p2, wx.aui.AuiPaneInfo().Name("other3").Right().Layer(1).Position(1).CloseButton(True))
+        self._mgr.AddPane(self.CreatePanel(), wx.aui.AuiPaneInfo().Name("other4").Right().Layer(1).Position(1).CloseButton(True))
+        
+        
         self._mgr.Update()        
 
     def create_work_area(self):
         self.panel = self.CreatePanel()
         #self.panel.SetBackgroundColour("Dark Grey")
-        self._mgr.AddPane(self.panel, wx.aui.AuiPaneInfo().Name("work-area").CenterPane())
 
         # Notebook
         self.nb = wx.aui.AuiNotebook(self.panel)
@@ -495,6 +573,8 @@ class App(wx.Frame):
         sz = wx.BoxSizer()
         sz.Add(self.nb,2,wx.EXPAND)
         self.panel.SetSizer(sz)
+
+        self._mgr.AddPane(self.panel, wx.aui.AuiPaneInfo().Name("work-area").CenterPane())
         perspective_all = self._mgr.SavePerspective()
         all_panes = self._mgr.GetAllPanes()
 
@@ -522,9 +602,24 @@ class App(wx.Frame):
     def OnNew(self, event):
         self.create_new_stage()
 
-    def OnAbout(self, event):
-        about = About(self)
-        about.show()
+    def OnHelp(self, event):
+        event_id = event.GetId()
+        l = hl.HyperLinkCtrl(self, -1)
+        l.Show(False) # Do not display the hyperlink control
+        if event_id == ID_HelpAbout:
+            about = About(self)
+            about.show()
+        elif event_id == ID_Help:
+            l.GotoURL("http://synfig.org/wiki/Category:Manual")
+        elif event_id == ID_HelpTutorials:
+            l.GotoURL("http://synfig.org/wiki/Category:Tutorials")
+        elif event_id == ID_HelpReference:
+            l.GotoURL("http://synfig.org/wiki/Category:Reference")
+        elif event_id == ID_HelpFAQ:
+            l.GotoURL("http://synfig.org/wiki/FAQ")
+        elif event_id == ID_HelpSupport:
+            l.GotoURL("http://synfig.org/cms/en/support")
+
     def OnShowMenubar(self, event):
         pass
 
