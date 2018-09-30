@@ -30,3 +30,6 @@ Dependencies
 Entry Point:
 - Run studio/src/gui/main.py
 
+Screenshot
+-----------
+![screenshot](https://github.com/eshikafe/wxSynfig/blob/master/studio/images/wxSynfig_screenshot.PNG)
