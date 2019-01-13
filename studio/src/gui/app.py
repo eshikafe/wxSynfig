@@ -13,7 +13,7 @@
 #	General Public License for more details.
 #
 #  wxSynfig/app.py: Copyright (c) 2017 Austin Aigbe
-#  
+#
 #  Synfig/app.cpp:  Copyright (c) 2002-2005 Robert B. Quattlebaum Jr., Adrian Bentley
 #                   Copyright (c) 2007, 2008 Chris Moore
 #                   Copyright (c) 2008 Gerald Young
@@ -179,7 +179,7 @@ class App(wx.Frame):
 
         self.init_ui_manager()
 
-        
+
         self.Maximize()
         self.SetMinSize(wx.Size(800, 300))
         self.Show()
@@ -228,13 +228,13 @@ class App(wx.Frame):
         menu_file = wx.Menu()
         menu_file_new = wx.MenuItem(menu_file, wx.ID_NEW, text=_("New\tCtrl+N"), kind=wx.ITEM_NORMAL)
         menu_file_new.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_NEW, wx.ART_MENU))
-        menu_file.AppendItem(menu_file_new)
+        menu_file.Append(menu_file_new)
 
         #menu_file.Append(wx.ID_NEW,_("New\tCtrl+N"))
         #menu_file.Append(wx.ID_OPEN, _("Open\tCtrl+O"))
         menu_file_open = wx.MenuItem(menu_file, wx.ID_OPEN, text=_("Open\tCtrl+O"), kind=wx.ITEM_NORMAL)
         menu_file_open.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_OPEN, wx.ART_MENU))
-        menu_file.AppendItem(menu_file_open)
+        menu_file.Append(menu_file_open)
 
         #menu_open_recent = wx.Menu()
         #menu_file.AppendMenu(ID_MenuOpenRecent,_("Open Recent"), menu_open_recent)
@@ -243,29 +243,29 @@ class App(wx.Frame):
         #menu_file.Append(wx.ID_SAVE, _("Save\tCtrl+S"))
         menu_file_save = wx.MenuItem(menu_file, wx.ID_SAVE, text=_("Save\tCtrl+S"), kind=wx.ITEM_NORMAL)
         menu_file_save.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE, wx.ART_MENU))
-        menu_file.AppendItem(menu_file_save)
+        menu_file.Append(menu_file_save)
 
         #menu_file.Append(ID_SaveAs, _("Save As...\tShift+Ctrl+S"))
         menu_file_save_as = wx.MenuItem(menu_file, ID_SaveAs, text=_("Save As...\tShift+Ctrl+S"), kind=wx.ITEM_NORMAL)
         menu_file_save_as.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
-        menu_file.AppendItem(menu_file_save_as)
+        menu_file.Append(menu_file_save_as)
 
         #menu_file.Append(ID_SaveAll, _("Save All"))
         menu_file_save_all = wx.MenuItem(menu_file, ID_SaveAll, text=_("Save All"), kind=wx.ITEM_NORMAL)
         #menu_file_save_all.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
-        menu_file.AppendItem(menu_file_save_all)
+        menu_file.Append(menu_file_save_all)
 
         #menu_file.Append(ID_Revert, _("Revert"))
         menu_file_revert = wx.MenuItem(menu_file, ID_Revert, text=_("Revert"), kind=wx.ITEM_NORMAL)
         #menu_file_revert.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
-        menu_file.AppendItem(menu_file_revert)
-        
+        menu_file.Append(menu_file_revert)
+
         menu_file.AppendSeparator()
 
         #menu_file.Append(ID_Import, _("Import\tCtrl+I"))
         menu_file_import = wx.MenuItem(menu_file, ID_Import, text=_("Import\tCtrl+I"), kind=wx.ITEM_NORMAL)
         #menu_file_import.SetBitmap(wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_MENU))
-        menu_file.AppendItem(menu_file_import)
+        menu_file.Append(menu_file_import)
 
         menu_file.AppendSeparator()
         menu_file.Append(ID_Preview, _("Preview\tF11"))
@@ -304,11 +304,11 @@ class App(wx.Frame):
         show_hide_handles.Append(ID_ShowVertexHandles, _("Show Vertex Handles\tAlt+2"), kind=wx.ITEM_CHECK)
         show_hide_handles.Check(ID_ShowVertexHandles, True)
 
-        menu_view.AppendMenu(ID_ShowHideHandles, _("Show/Hide Handles"), show_hide_handles)
+        menu_view.Append(ID_ShowHideHandles, _("Show/Hide Handles"), show_hide_handles)
         preview_quality = wx.Menu()
-        menu_view.AppendMenu(ID_PreviewQuality, _("Preview Quality"), preview_quality)
+        menu_view.Append(ID_PreviewQuality, _("Preview Quality"), preview_quality)
         low_res_pixel_size = wx.Menu()
-        menu_view.AppendMenu(ID_LowResPixelSize, _("Low-Res Pixel Size"), low_res_pixel_size)
+        menu_view.Append(ID_LowResPixelSize, _("Low-Res Pixel Size"), low_res_pixel_size)
         menu_view.AppendSeparator()
         menu_view.Append(ID_Play, _("Play"))
         menu_view.Append(ID_Pause, _("Pause"))
@@ -388,9 +388,9 @@ class App(wx.Frame):
         # Layer menu
         menu_layer = wx.Menu()
         new_layer = wx.Menu()
-        menu_layer.AppendMenu(ID_NewLayer, _("New Layer"), new_layer)
+        menu_layer.Append(ID_NewLayer, _("New Layer"), new_layer)
         blurs = wx.Menu()
-        new_layer.AppendMenu(ID_Blurs, _("Blurs"), blurs)
+        new_layer.Append(ID_Blurs, _("Blurs"), blurs)
         blurs.Append(ID_BlursMotionBlur, _("Motion Blur"))
         blurs.Append(ID_BlursBlur, _("Blur"))
         blurs.Append(ID_BlursRadialBlur, _("Radial Blur"))
@@ -423,7 +423,7 @@ class App(wx.Frame):
         #app_menubar.Append(menu_control, _("C&ontrol"))
         #app_menubar.Append(menu_debug, _("&Debug"))
         app_menubar.Append(menu_canvas, _("&Canvas"))
-        #app_menubar.Append(menu_toolbox, _("Toolbox"))
+        app_menubar.Append(menu_toolbox, _("Toolbox"))
         app_menubar.Append(menu_layer, _("&Layer"))
         app_menubar.Append(menu_plugins, _("Plug-Ins"))
         app_menubar.Append(menu_window, _("&Window"))
@@ -446,7 +446,7 @@ class App(wx.Frame):
     def create_toolbox(self):
         toolbox = self.CreatePanel()
         toolbox_sizer = wx.GridBagSizer(0,0)
-        
+
         bmp_transform = wx.Bitmap(images_path+"tool_normal_icon.png", wx.BITMAP_TYPE_PNG)
         bmp_smooth_move = wx.Bitmap(images_path+"tool_smooth_move_icon.png", wx.BITMAP_TYPE_PNG)
         bmp_scale = wx.Bitmap(images_path+"tool_scale_icon.png", wx.BITMAP_TYPE_PNG)
@@ -517,7 +517,7 @@ class App(wx.Frame):
 
         # Toolbox Pane
         self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().Layer(1).Position(1).CloseButton(False))
-        
+
         self.p1 = self.CreatePanel()
         self.windows = wx.aui.AuiNotebook(self.p1)
         self.keyframe = self.CreatePanel()
@@ -555,9 +555,9 @@ class App(wx.Frame):
         #self._mgr.AddPane(self.p2, wx.aui.AuiPaneInfo().Name("other2").Bottom().Layer(1).Position(1).CloseButton(True).CaptionVisible(False).Dockable(True).Floatable(True))
         self._mgr.AddPane(self.p2, wx.aui.AuiPaneInfo().Name("other3").Right().Layer(1).Position(1).CloseButton(True))
         self._mgr.AddPane(self.CreatePanel(), wx.aui.AuiPaneInfo().Name("other4").Right().Layer(1).Position(1).CloseButton(True))
-        
-        
-        self._mgr.Update()        
+
+
+        self._mgr.Update()
 
     def create_work_area(self):
         self.panel = self.CreatePanel()
@@ -579,7 +579,7 @@ class App(wx.Frame):
         all_panes = self._mgr.GetAllPanes()
 
         self._mgr.GetPane("work-area").Show()
-        self._mgr.Update() 
+        self._mgr.Update()
         #darkMode.darkMode(self.panel, self.panel.GetBackgroundColour())
 
     def CreatePanel(self):
@@ -651,4 +651,3 @@ class App(wx.Frame):
         settings.set_value("navigator_uses_cairo", "0")
         settings.set_value("workarea_uses_cairo", "0")
         settings.set_value("pref.enable_mainwin_menubar", "1")
-
