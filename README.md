@@ -10,7 +10,7 @@ Objective
 
 Roadmap
 --------
-- Publication to HTML5 Canvas and WebGL
+- Publication to HTML5 Canvas
 
 
 Dependencies
