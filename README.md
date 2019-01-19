@@ -15,8 +15,10 @@ Roadmap
 
 Dependencies
 --------------
-- Python 2.7.10
+- Python 2.7.10 or later
+   - https://www.python.org/downloads/
 - wxPython 3.0 or later
+   - pip install -U wxPython
 
 
 Entry Point:
