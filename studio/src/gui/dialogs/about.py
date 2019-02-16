@@ -22,7 +22,7 @@ import wx.lib.agw.hyperlink as hl
 from wx.lib.wordwrap import wordwrap
 
 class AboutDialog(wx.Dialog):
-	def __init__(self, parent, ID, title, pos=wx.DefaultPosition, size=(420, 350), style=wx.DEFAULT_DIALOG_STYLE):
+	def __init__(self, parent, ID, title, pos=wx.DefaultPosition, size=(420, 360), style=wx.DEFAULT_DIALOG_STYLE):
 		wx.Dialog.__init__(self,parent,ID,title,pos,size, style)
 
 		v = wx.BoxSizer(wx.VERTICAL)
@@ -30,7 +30,7 @@ class AboutDialog(wx.Dialog):
 		v2 = wx.BoxSizer(wx.VERTICAL)
 		v.Add(v1,0,wx.ALIGN_CENTRE_HORIZONTAL)
 		v.Add(v2,0,wx.ALIGN_CENTRE_HORIZONTAL)
-		
+
 		# Icons
 		self.SetIcon(wx.Icon(images_path + "synfig_icon.ico"))
 		png = wx.Image(images_path + "synfig_icon.png", wx.BITMAP_TYPE_PNG).ConvertToBitmap()
@@ -159,7 +159,10 @@ class AboutDialog(wx.Dialog):
 	def set_authors(self, authors):
 		t = ""
 		for i in authors:
-			t = t + i + "\n\t\t\t"
+			if i == 3:
+				t = t + i + "\n"
+			else:
+				t = t + i + "\n\t\t\t"
 		t = "\t\t " + t
 		self.authors = t
 		self.credits_txt.SetValue(self.authors)
@@ -184,7 +187,7 @@ class About(AboutDialog):
 	def __init__(self, parent,ID=-1,title="About " + APP_NAME):
 		AboutDialog.__init__(self,parent,ID,title)
 		self.set_program_name(APP_NAME + " - a wxPython port of Synfig Studio")
-		self.set_version("Version: " + VERSION + ", Python: " + sys.version[0:6] + ", wx: " + wx.version())
+		self.set_version("Python: " + sys.version[0:6] + ", wx: " + wx.version())
 		self.set_comment("2D vector animation studio")
 		self.set_website("http://synfig.org/")
 		self.set_copyright("Copyright 2001-2013\nRobert B. Quattlebaum Jr.,\nAdrian Bentley and Synfig contributors")
@@ -200,7 +203,7 @@ class About(AboutDialog):
 
 		"You should have received a copy of the GNU General Public License along "
 		"with this program; if not, write to the Free Software Foundation, Inc., "
-		"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or visit: http://www.gnu.org/", 550, wx.ClientDC(self)) 
+		"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or visit: http://www.gnu.org/", 550, wx.ClientDC(self))
 		self.set_license(license)
 
 		authors = []
@@ -268,10 +271,10 @@ class About(AboutDialog):
 		artists.append("Thimotee Guiet (satrip)")
 		artists.append("Yu Chen (jcome)")
 		self.set_artists(artists)
-		
+
 		self.CenterOnScreen()
 
-        
+
 	#void close(int);
 	#void on_link_clicked(Gtk::AboutDialog&, const Glib::ustring &url);
 
