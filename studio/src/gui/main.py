@@ -78,6 +78,6 @@ if __name__ == '__main__':
 		App(os.path.dirname(binary_path), argc, sys.argv)
 		app.MainLoop()
 
-	except Exception, e:
+	except Exception as e:
 		print(APP_NAME + " Exception: " + "[" +__file__ + "] " + str(e) + "\n")
 		sys.exit()
