@@ -15,10 +15,10 @@ Roadmap
 
 Dependencies
 --------------
-- Python 2.7.10 or later
+- Python 3.7.2
    - https://www.python.org/downloads/
 - wxPython 4.0 or later
-   - pip install -U wxPython
+   - pip install wxPython=4.0.4
 
 
 Entry Point:
@@ -26,4 +26,4 @@ Entry Point:
 
 Screenshot
 -----------
-![screenshot](https://github.com/eshikafe/wxSynfig/blob/master/studio/images/wxSynfig_screenshot.PNG)
+![screenshot](https://github.com/eshikafe/wxSynfig/blob/master/studio/images/wxSynfig_py3.PNG)
