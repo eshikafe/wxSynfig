@@ -73,95 +73,95 @@ IMAGE_DIR = images_path
 PLUGIN_DIR = ""
 
 
-ID_MenuOpenRecent = wx.NewId()
-ID_SaveAs = wx.NewId()
-ID_SaveAll = wx.NewId()
-ID_Revert = wx.NewId()
-ID_Import = wx.NewId()
-ID_Preview = wx.NewId()
-ID_Render = wx.NewId()
-ID_CloseDocument = wx.NewId()
+ID_MenuOpenRecent = wx.ID_ANY
+ID_SaveAs = wx.ID_ANY
+ID_SaveAll = wx.ID_ANY
+ID_Revert = wx.ID_ANY
+ID_Import = wx.ID_ANY
+ID_Preview = wx.ID_ANY
+ID_Render = wx.ID_ANY
+ID_CloseDocument = wx.ID_ANY
 
-ID_Undo = wx.NewId()
-ID_Redo = wx.NewId()
-ID_Cut = wx.NewId()
-ID_Copy = wx.NewId()
-ID_Paste = wx.NewId()
-ID_SelectAllLayers = wx.NewId()
-ID_UnselectAllLayers = wx.NewId()
-ID_SelectAllHandles = wx.NewId()
-ID_UnselectAllHandles = wx.NewId()
-ID_InputDevices = wx.NewId()
-ID_Preferences = wx.NewId()
+ID_Undo = wx.ID_ANY
+ID_Redo = wx.ID_ANY
+ID_Cut = wx.ID_ANY
+ID_Copy = wx.ID_ANY
+ID_Paste = wx.ID_ANY
+ID_SelectAllLayers = wx.ID_ANY
+ID_UnselectAllLayers = wx.ID_ANY
+ID_SelectAllHandles = wx.ID_ANY
+ID_UnselectAllHandles = wx.ID_ANY
+ID_InputDevices = wx.ID_ANY
+ID_Preferences = wx.ID_ANY
 
-ID_ShowMenubar = wx.NewId()
-ID_Toolbar = wx.NewId()
-ID_ShowHideHandles = wx.NewId()
-ID_ShowPositionHandles = wx.NewId()
-ID_ShowVertexHandles = wx.NewId()
-ID_LowResPixelSize = wx.NewId()
-ID_PreviewQuality = wx.NewId()
-ID_Play = wx.NewId()
-ID_Pause = wx.NewId()
-ID_ShowGrid = wx.NewId()
-ID_SnapToGrid = wx.NewId()
-ID_ShowGuides = wx.NewId()
-ID_SnapToGuides = wx.NewId()
-ID_UseLowRes = wx.NewId()
-ID_ShowOnionSkin = wx.NewId()
-ID_ZoomIn = wx.NewId()
-ID_ZoomOut = wx.NewId()
-ID_BestFit = wx.NewId()
-ID_NormalSize = wx.NewId()
-ID_ZoomInOnTimeline = wx.NewId()
-ID_ZoomOutOnTimeline = wx.NewId()
-ID_SeekToPreviousKeyframe = wx.NewId()
-ID_SeekToNextKeyframe = wx.NewId()
-ID_SeekToPreviousFrame = wx.NewId()
-ID_SeekToNextFrame = wx.NewId()
-ID_SeekToBackward = wx.NewId()
-ID_SeekToForward = wx.NewId()
-ID_SeekToBegin = wx.NewId()
-ID_SeekToEnd = wx.NewId()
+ID_ShowMenubar = wx.ID_ANY
+ID_Toolbar = wx.ID_ANY
+ID_ShowHideHandles = wx.ID_ANY
+ID_ShowPositionHandles = wx.ID_ANY
+ID_ShowVertexHandles = wx.ID_ANY
+ID_LowResPixelSize = wx.ID_ANY
+ID_PreviewQuality = wx.ID_ANY
+ID_Play = wx.ID_ANY
+ID_Pause = wx.ID_ANY
+ID_ShowGrid = wx.ID_ANY
+ID_SnapToGrid = wx.ID_ANY
+ID_ShowGuides = wx.ID_ANY
+ID_SnapToGuides = wx.ID_ANY
+ID_UseLowRes = wx.ID_ANY
+ID_ShowOnionSkin = wx.ID_ANY
+ID_ZoomIn = wx.ID_ANY
+ID_ZoomOut = wx.ID_ANY
+ID_BestFit = wx.ID_ANY
+ID_NormalSize = wx.ID_ANY
+ID_ZoomInOnTimeline = wx.ID_ANY
+ID_ZoomOutOnTimeline = wx.ID_ANY
+ID_SeekToPreviousKeyframe = wx.ID_ANY
+ID_SeekToNextKeyframe = wx.ID_ANY
+ID_SeekToPreviousFrame = wx.ID_ANY
+ID_SeekToNextFrame = wx.ID_ANY
+ID_SeekToBackward = wx.ID_ANY
+ID_SeekToForward = wx.ID_ANY
+ID_SeekToBegin = wx.ID_ANY
+ID_SeekToEnd = wx.ID_ANY
 
-ID_Properties = wx.NewId()
-ID_Options = wx.NewId()
+ID_Properties = wx.ID_ANY
+ID_Options = wx.ID_ANY
 
-ID_TransformTool = wx.NewId()
-ID_SmoothMoveTool = wx.NewId()
-ID_ScaleTool = wx.NewId()
-ID_CircleTool = wx.NewId()
-ID_RotateTool = wx.NewId()
-ID_MirrorTool = wx.NewId()
-ID_RectangleTool = wx.NewId()
-ID_StarTool = wx.NewId()
-ID_PolygonTool = wx.NewId()
-ID_GradientTool = wx.NewId()
-ID_SplineTool = wx.NewId()
-ID_DrawTool = wx.NewId()
-ID_CutoutTool = wx.NewId()
-ID_WidthTool = wx.NewId()
-ID_FillTool = wx.NewId()
-ID_EyedropTool = wx.NewId()
-ID_TextTool = wx.NewId()
-ID_SketchTool = wx.NewId()
-ID_BrushTool = wx.NewId()
-ID_ZoomTool = wx.NewId()
+ID_TransformTool = wx.ID_ANY
+ID_SmoothMoveTool = wx.ID_ANY
+ID_ScaleTool = wx.ID_ANY
+ID_CircleTool = wx.ID_ANY
+ID_RotateTool = wx.ID_ANY
+ID_MirrorTool = wx.ID_ANY
+ID_RectangleTool = wx.ID_ANY
+ID_StarTool = wx.ID_ANY
+ID_PolygonTool = wx.ID_ANY
+ID_GradientTool = wx.ID_ANY
+ID_SplineTool = wx.ID_ANY
+ID_DrawTool = wx.ID_ANY
+ID_CutoutTool = wx.ID_ANY
+ID_WidthTool = wx.ID_ANY
+ID_FillTool = wx.ID_ANY
+ID_EyedropTool = wx.ID_ANY
+ID_TextTool = wx.ID_ANY
+ID_SketchTool = wx.ID_ANY
+ID_BrushTool = wx.ID_ANY
+ID_ZoomTool = wx.ID_ANY
 
-ID_NewLayer = wx.NewId()
-ID_Blurs = wx.NewId()
-ID_BlursBlur = wx.NewId()
-ID_BlursMotionBlur = wx.NewId()
-ID_BlursRadialBlur = wx.NewId()
+ID_NewLayer = wx.ID_ANY
+ID_Blurs = wx.ID_ANY
+ID_BlursBlur = wx.ID_ANY
+ID_BlursMotionBlur = wx.ID_ANY
+ID_BlursRadialBlur = wx.ID_ANY
 
-ID_Help = wx.NewId()
-ID_HelpTutorials = wx.NewId()
-ID_HelpReference = wx.NewId()
-ID_HelpFAQ = wx.NewId()
-ID_HelpSupport = wx.NewId()
-ID_HelpAbout = wx.NewId()
+ID_Help = wx.ID_ANY
+ID_HelpTutorials = wx.ID_ANY
+ID_HelpReference = wx.ID_ANY
+ID_HelpFAQ = wx.ID_ANY
+ID_HelpSupport = wx.ID_ANY
+ID_HelpAbout = wx.ID_ANY
 
-ID_MAIN_TOOLBAR = wx.NewId()
+ID_MAIN_TOOLBAR = wx.ID_ANY
 
 #import darkMode
 
@@ -516,24 +516,23 @@ class App(wx.Frame):
         toolbox.SetSizerAndFit(toolbox_sizer)
 
         # Toolbox Pane
-        self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().Layer(1).Position(1).CloseButton(False))
+        self._mgr.AddPane(toolbox, wx.aui.AuiPaneInfo().Name("toolbox").Caption("Toolbox").Left().CloseButton(False))
 
-        self.p1 = self.CreatePanel()
-        self.windows = wx.aui.AuiNotebook(self.p1)
-        self.keyframe = self.CreatePanel()
-        self.parameters = self.CreatePanel()
-        self.graphs = self.CreatePanel()
-        self.library = self.CreatePanel()
-        self.canvas_meta_data = self.CreatePanel()
-        self.windows.AddPage(self.parameters, "Parameters")
-        self.windows.AddPage(self.keyframe, "Keyframes")
-        self.windows.AddPage(self.graphs, "Graphs")
-        self.windows.AddPage(self.canvas_meta_data, "Canvas MetaData")
-        self.windows.AddPage(self.library, "Library")
+        font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.FONTWEIGHT_BOLD, False, "Arial")
+        self.windows = wx.aui.AuiNotebook(self)
+        self.keyFrameTab = Tab(self.windows, "Keyframes")
+        self.parametersTab = Tab(self.windows, "Parameterd")
+        self.graphsTab = Tab(self.windows, "Graphs")
+        self.libraryTab = Tab(self.windows, "Library")
+        self.canvasMetaDataTab = Tab(self.windows, "Canvas MetaData")
+        self.windows.AddPage(self.parametersTab)
+        self.windows.AddPage(self.keyFrameTab)
+        self.windows.AddPage(self.graphsTab)
+        self.windows.AddPage(self.canvasMetaDataTab)
+        self.windows.AddPage(self.libraryTab)
 
-        self.p2 = self.CreatePanel()
-        self.w = wx.aui.AuiNotebook(self.p2)
-        self.canvas_browser = self.CreatePanel()
+        self.w = wx.aui.AuiNotebook(self)
+        self.canvasBrowserTab = self.CreatePanel()
         self.navigator = self.CreatePanel()
         self.info = self.CreatePanel()
         self.palette_editor = self.CreatePanel()
@@ -542,19 +541,10 @@ class App(wx.Frame):
         self.w.AddPage(self.info, "Info")
         self.w.AddPage(self.palette_editor, "Palete Editor")
 
-        sz = wx.BoxSizer()
-        sz.Add(self.windows,2,wx.EXPAND)
-        self.p1.SetSizer(sz)
 
-        sz2 = wx.BoxSizer()
-        sz2.Add(self.w,2,wx.EXPAND)
-        self.p2.SetSizer(sz2)
-
-
-        self._mgr.AddPane(self.p1, wx.aui.AuiPaneInfo().Name("other").Bottom().Layer(1).Position(1).CloseButton(True).CaptionVisible(False).Dockable(True).Floatable(True))
-        #self._mgr.AddPane(self.p2, wx.aui.AuiPaneInfo().Name("other2").Bottom().Layer(1).Position(1).CloseButton(True).CaptionVisible(False).Dockable(True).Floatable(True))
-        self._mgr.AddPane(self.p2, wx.aui.AuiPaneInfo().Name("other3").Right().Layer(1).Position(1).CloseButton(True))
-        self._mgr.AddPane(self.CreatePanel(), wx.aui.AuiPaneInfo().Name("other4").Right().Layer(1).Position(1).CloseButton(True))
+        self._mgr.AddPane(self.windows, wx.aui.AuiPaneInfo().Name("other").Bottom().CloseButton(True).CaptionVisible(False).Dockable(True).Floatable(True))
+        self._mgr.AddPane(self.w, wx.aui.AuiPaneInfo().Name("other3").Right().CloseButton(True))
+        self._mgr.AddPane(self.CreatePanel(), wx.aui.AuiPaneInfo().Name("other4").Right().CloseButton(True))
 
 
         self._mgr.Update()
@@ -651,3 +641,9 @@ class App(wx.Frame):
         settings.set_value("navigator_uses_cairo", "0")
         settings.set_value("workarea_uses_cairo", "0")
         settings.set_value("pref.enable_mainwin_menubar", "1")
+
+class Tab(wx.Panel):
+    def __init__(self, parent, title):
+        wx.Panel(self, parent=parent, id=wx.ANY)
+        self.title = title
+
