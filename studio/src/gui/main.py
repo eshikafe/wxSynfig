@@ -47,33 +47,7 @@ if __name__ == '__main__':
 	#gettext.bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8")
 	#gettext.textdomain(GETTEXT_PACKAGE)
 
-
-	
-	# {
-	# 	SmartFILE file(IPC::make_connection());
-	# 	if(file)
-	# 	{
-	# 		print("\n")
-	# 		print("   " + _("synfig studio is already running") + "\n\n")
-	# 		print("   " + _("the existing process will be used") + "\n\n")
-	# 		#// Hey, another copy of us is open!
-	# 		#// don't bother opening us, just go ahead and
-	# 		#// tell the other copy to load it all up
-	# 		if (argc > 1)
-	# 			fprintf(file.get(),"F\n");
-	# 		while(--argc)
-	# 			if((argv)[argc] && (argv)[argc][0]!='-')
-	# 				fprintf(file.get(),"O %s\n",etl::absolute_path((argv)[argc]).c_str());
-	# 		fprintf(file.get(),"F\n");
-	# 		return 0;
-	# 	}
-	# }
-	
-	#print("\n")
-	#print("   " + _(APP_NAME + " -- starting up application...") + "\n\n")
-
 	try:
-		#studio::App app(etl::dirname(binary_path), &argc, &argv);
 		app = wx.App(False)
 		App(os.path.dirname(binary_path), argc, sys.argv)
 		app.MainLoop()
