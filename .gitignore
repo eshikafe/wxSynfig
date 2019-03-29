@@ -5,3 +5,5 @@
 .vscode/ipch/784ed6e8604923d4/ASYNCRENDERER.ipch
 .vscode/ipch/784ed6e8604923d4/mmap_address.bin
 .vscode/settings.json
+*.ipch
+*.bin
