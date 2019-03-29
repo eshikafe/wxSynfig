@@ -1,3 +1,7 @@
 *~
 *.pyc
 
+.vscode/ipch/18d9350afe15dfcd/mmap_address.bin
+.vscode/ipch/784ed6e8604923d4/ASYNCRENDERER.ipch
+.vscode/ipch/784ed6e8604923d4/mmap_address.bin
+.vscode/settings.json
