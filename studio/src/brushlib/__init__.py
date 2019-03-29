@@ -1,4 +1,4 @@
-# Synfig-Reloaded: __init__.py
+# wxSynfid: __init__.py
 # 
 # Cythonized brushlib 
 # 

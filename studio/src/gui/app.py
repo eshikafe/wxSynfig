@@ -159,7 +159,6 @@ ID_HelpTutorials = wx.ID_ANY
 ID_HelpReference = wx.ID_ANY
 ID_HelpFAQ = wx.ID_ANY
 ID_HelpSupport = wx.ID_ANY
-ID_HelpAbout = wx.ID_ANY
 
 ID_MAIN_TOOLBAR = wx.ID_ANY
 
@@ -293,16 +292,16 @@ class App(wx.Frame):
 
         # View menu
         menu_view = wx.Menu()
-        menu_view.Append(ID_ShowMenubar, _("Show Menuar"), kind=wx.ITEM_CHECK)
-        menu_view.Check(ID_ShowMenubar, True)
+        show_menubar = menu_view.Append(ID_ShowMenubar, _("Show Menuar"), kind=wx.ITEM_CHECK)
+        show_menubar.Check(True)
         menu_view.Append(ID_Toolbar, _("Toolbar"))
         menu_view.AppendSeparator()
 
         show_hide_handles = wx.Menu()
-        show_hide_handles.Append(ID_ShowPositionHandles, _("Show Position Handles\tAlt+1"), kind=wx.ITEM_CHECK)
-        show_hide_handles.Check(ID_ShowPositionHandles, True)
-        show_hide_handles.Append(ID_ShowVertexHandles, _("Show Vertex Handles\tAlt+2"), kind=wx.ITEM_CHECK)
-        show_hide_handles.Check(ID_ShowVertexHandles, True)
+        show_pos_handle = show_hide_handles.Append(ID_ShowPositionHandles, _("Show Position Handles\tAlt+1"), kind=wx.ITEM_CHECK)
+        show_pos_handle.Check(True)
+        show_vertex_handle = show_hide_handles.Append(ID_ShowVertexHandles, _("Show Vertex Handles\tAlt+2"), kind=wx.ITEM_CHECK)
+        show_vertex_handle.Check( True)
 
         menu_view.Append(ID_ShowHideHandles, _("Show/Hide Handles"), show_hide_handles)
         preview_quality = wx.Menu()
@@ -411,7 +410,7 @@ class App(wx.Frame):
         menu_help.AppendSeparator()
         menu_help.Append(ID_HelpSupport, _("Get Support"))
         menu_help.AppendSeparator()
-        menu_help.Append(ID_HelpAbout, _("About " + APP_NAME))
+        menu_help.Append(wx.ID_ABOUT, _("About " + APP_NAME))
 
         app_menubar.Append(menu_file, _("&File"))
         app_menubar.Append(menu_edit, _("&Edit"))
@@ -438,7 +437,7 @@ class App(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpReference)
         self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpFAQ)
         self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpSupport)
-        self.Bind(wx.EVT_MENU, self.OnHelp, id=ID_HelpAbout)
+        self.Bind(wx.EVT_MENU, self.OnHelp, id=wx.ID_ABOUT)
 
 
         self.SetMenuBar(app_menubar)
@@ -525,14 +524,14 @@ class App(wx.Frame):
         self.graphsTab = Tab(self.windows, "Graphs")
         self.libraryTab = Tab(self.windows, "Library")
         self.canvasMetaDataTab = Tab(self.windows, "Canvas MetaData")
-        self.windows.AddPage(self.parametersTab)
-        self.windows.AddPage(self.keyFrameTab)
-        self.windows.AddPage(self.graphsTab)
-        self.windows.AddPage(self.canvasMetaDataTab)
-        self.windows.AddPage(self.libraryTab)
+        # self.windows.AddPage(self.parametersTab)
+        # self.windows.AddPage(self.keyFrameTab)
+        # self.windows.AddPage(self.graphsTab)
+        # self.windows.AddPage(self.canvasMetaDataTab)
+        # self.windows.AddPage(self.libraryTab)
 
         self.w = wx.aui.AuiNotebook(self)
-        self.canvasBrowserTab = self.CreatePanel()
+        self.canvas_browser = self.CreatePanel()
         self.navigator = self.CreatePanel()
         self.info = self.CreatePanel()
         self.palette_editor = self.CreatePanel()
@@ -596,7 +595,7 @@ class App(wx.Frame):
         event_id = event.GetId()
         l = hl.HyperLinkCtrl(self, -1)
         l.Show(False) # Do not display the hyperlink control
-        if event_id == ID_HelpAbout:
+        if event_id == wx.ID_ABOUT:
             about = About(self)
             about.show()
         elif event_id == ID_Help:
@@ -644,6 +643,6 @@ class App(wx.Frame):
 
 class Tab(wx.Panel):
     def __init__(self, parent, title):
-        wx.Panel(self, parent=parent, id=wx.ANY)
-        self.title = title
+        wx.Panel.__init__(self, parent, -1)
+        parent.AddPage(self, title)
 
