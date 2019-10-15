@@ -1,6 +1,6 @@
 wxSynfig
 ====================
-wxPython port of the Synfig GUI with a Rust backend
+A Synfig GUI port to wxPython
 
 Objective
 --------------------
