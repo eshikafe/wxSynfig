@@ -1,16 +1,11 @@
 wxSynfig
 ====================
-wxPython port of Synfig 
+A Synfig GUI port to wxPython
 
 Objective
 --------------------
-- Make computational 2D graphics programming accessible to everyone and easy to learn 
-- Performance, stability, simplicity and platform nativity.
-- Test bed for 2D computer graphics experiments and research.
+- An experiment with Python and Rust for 2d vector animation
 
-Roadmap
---------
-- Publication to HTML5 Canvas
 
 
 Dependencies
