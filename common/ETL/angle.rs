@@ -1,60 +1,18 @@
-/* ========================================================================
-** Extended Template and Library
-** Angle Abstraction Class Implementation
-** $Id$
-**
-** Copyright (c) 2002 Robert B. Quattlebaum Jr.
-** Copyright (c) 2007 Chris Moore
-**
-** This package is free software; you can redistribute it and/or
-** modify it under the terms of the GNU General Public License as
-** published by the Free Software Foundation; either version 2 of
-** the License, or (at your option) any later version.
-**
-** This package is distributed in the hope that it will be useful,
-** but WITHOUT ANY WARRANTY; without even the implied warranty of
-** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-** General Public License for more details.
-**
-** === N O T E S ===========================================================
-**
-** This is an internal header file, included by other ETL headers.
-** You should not attempt to use it directly.
-**
-** ========================================================================= */
 
-/* === S T A R T =========================================================== */
+// Extended Template and Library
+// Angle Abstraction Class Implementation
+// use crate angle ="0.4.0"
 
-#ifndef __ETL__ANGLE_H
-#define __ETL__ANGLE_H
 
-/* === H E A D E R S ======================================================= */
 
-#include <cstdio>
-#include <cmath>
-#include <functional>
 
-/* === M A C R O S ========================================================= */
-
-#ifndef PI
-# define PI (3.1415926535897932384626433832795029L)
-# define HALF_PI (PI/2)
-#endif
-
-#define ANGLE_EPSILON (1.0e-6)
-
-/* === T Y P E D E F S ===================================================== */
-
-/* === C L A S S E S & S T R U C T S ======================================= */
-
-_ETL_BEGIN_NAMESPACE
 
 // ========================================================================
 /*!	\class	angle	_angle.h	ETL/angle
 **	\brief	Abstraction of the concept of an angle
 **  \see angle::deg, angle::rad, angle::rot, angle::sin, angle::cos, angle::tan, fastangle
-**	\writeme
-*/
+
+
 class angle
 {
 public:

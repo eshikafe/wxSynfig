@@ -1,0 +1,8 @@
+[package]
+name = "ETL"
+version = "0.1.0"
+authors = ["The wxSynfig Developers"]
+edition = "2018"
+
+[dependencies]
+angle = "0.4.0"
