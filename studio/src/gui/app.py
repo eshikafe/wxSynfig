@@ -520,15 +520,11 @@ class App(wx.Frame):
         font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.FONTWEIGHT_BOLD, False, "Arial")
         self.windows = wx.aui.AuiNotebook(self)
         self.keyFrameTab = Tab(self.windows, "Keyframes")
-        self.parametersTab = Tab(self.windows, "Parameterd")
+        self.parametersTab = Tab(self.windows, "Parameters")
         self.graphsTab = Tab(self.windows, "Graphs")
         self.libraryTab = Tab(self.windows, "Library")
         self.canvasMetaDataTab = Tab(self.windows, "Canvas MetaData")
-        # self.windows.AddPage(self.parametersTab)
-        # self.windows.AddPage(self.keyFrameTab)
-        # self.windows.AddPage(self.graphsTab)
-        # self.windows.AddPage(self.canvasMetaDataTab)
-        # self.windows.AddPage(self.libraryTab)
+        
 
         self.w = wx.aui.AuiNotebook(self)
         self.canvas_browser = self.CreatePanel()
