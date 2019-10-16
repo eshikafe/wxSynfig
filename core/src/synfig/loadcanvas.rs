@@ -1,64 +1,56 @@
-/* === S Y N F I G ========================================================= */
-/*!	\file loadcanvas.h
-**	\brief Implementation for the Synfig Canvas Loader (canvas file parser)
-**
-**	$Id$
-**
-**	\legal
-**	Copyright (c) 2002-2005 Robert B. Quattlebaum Jr., Adrian Bentley
-**	Copyright (c) 2007, 2008 Chris Moore
-**	Copyright (c) 2009 Carlos A. Sosa Navarro
-**
-**	This package is free software; you can redistribute it and/or
-**	modify it under the terms of the GNU General Public License as
-**	published by the Free Software Foundation; either version 2 of
-**	the License, or (at your option) any later version.
-**
-**	This package is distributed in the hope that it will be useful,
-**	but WITHOUT ANY WARRANTY; without even the implied warranty of
-**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-**	General Public License for more details.
-**	\endlegal
-*/
-/* ========================================================================= */
 
-/* === S T A R T =========================================================== */
+//	loadcanvas.rs
+//  Implementation for the wxSynfig Canvas Loader (canvas file parser)
+//  Copyright (c) 2019 wxSynfig Developers
+//  
+//	Copyright (c) 2002-2005 Robert B. Quattlebaum Jr., Adrian Bentley
+//	Copyright (c) 2007, 2008 Chris Moore
+//	Copyright (c) 2009 Carlos A. Sosa Navarro
 
-#ifndef __SYNFIG_LOADCANVAS_H
-#define __SYNFIG_LOADCANVAS_H
 
-/* === H E A D E R S ======================================================= */
+//#include "string.h"
+mod canvas;
+mod valuenode;
+mod vector;
+mod value;
+mod valuenodes;
+mod keyframe;
+mod guid;
+mod filesystemnative;
+mod weightedvalue;
+mod pair;
 
-#include "string.h"
-#include "canvas.h"
-#include "valuenode.h"
-#include "vector.h"
-#include "value.h"
-#include "valuenodes/valuenode_subtract.h"
-#include "valuenodes/valuenode_animated.h"
-#include "valuenodes/valuenode_composite.h"
-#include "valuenodes/valuenode_staticlist.h"
-#include "valuenodes/valuenode_dynamiclist.h"
-#include "keyframe.h"
-#include "guid.h"
-#include "filesystemnative.h"
-#include "weightedvalue.h"
-#include "pair.h"
+use valuenodes::{subtract, animated, composite, staticlist, dynamiclist};
+use guid::Guid;
 
-/* === M A C R O S ========================================================= */
-
-/* === T Y P E D E F S ===================================================== */
-
-/* === C L A S S E S & S T R U C T S ======================================= */
 
 namespace xmlpp { class Node; class Element; };
 
-namespace synfig {
+//	Trait: CanvasParser
+//	Trait that handles xmlpp elements from a sif file and converts them into Synfig objects
 
-/*!	\class CanvasParser
-**	\brief Class that handles xmlpp elements from a sif file and converts
-* them into Synfig objects
-*/
+Trait CanvasParser  {
+    // Maximun number of allowed warnings before fatal error is thrown
+	max_warnings: u32;
+	// Total number of warning during canvas parsing
+    total_warnings: u32;
+	// Total number of errors during canvas parsing
+    total_errors: u32;
+	// True if errors doesn't stop canvas parsing
+	allow_errors: bool;
+	// File name to parse
+	filename: String;
+	// Path of the file name to parse
+	path: String;
+	// Error text when errors found
+	errors_text: String;
+	// Warning text when warnings found
+	warnings_text: String;
+	// Seems not to be used
+	guid: Guid;
+
+}
+
 class CanvasParser
 {
 	/*

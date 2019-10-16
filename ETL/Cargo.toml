@@ -1,8 +1,10 @@
 [package]
-name = "ETL"
+name = "etl"
 version = "0.1.0"
 authors = ["The wxSynfig Developers"]
 edition = "2018"
 
 [dependencies]
 angle = "0.4.0"
+guid = "0.1.0"
+guid-create = "0.1.1"
