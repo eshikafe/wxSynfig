@@ -3,7 +3,7 @@ wxSynfig
 A Synfig GUI port to wxPython
 
 
-Installation
+Dependencies
 --------------
 - Python 3.7.2
    - https://www.python.org/downloads/
