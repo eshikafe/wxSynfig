@@ -11,7 +11,7 @@ Installation
    - pip install wxPython==4.0.7.post2    
 
 Entry Point:
-- Run studio/src/gui/main.py
+- `python studio\src\gui\main.py`
 
 Screenshot
 -----------
