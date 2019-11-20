@@ -20,7 +20,7 @@ Here is an overview of the wxSynfig source code folder structure
 |    |  |- test/
 |    |- studio/
 |    |  |- brushlib/
-|    |  |- gui/       ==> Contains the GUI source code file
+|    |  |- gui/       ==> Contains the GUI source code files
 |    |  |- images/
 |    |  |- plugins/
 |    |  |- synfigapp/
