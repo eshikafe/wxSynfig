@@ -1,7 +1,7 @@
 wxSynfig Design Document
 =============================
 
-# Source code struccture
+# Source code structure
 * wxSynfig
   * src
     * [core/](.\src\core)
