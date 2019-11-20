@@ -22,11 +22,10 @@ GETTEXT_PACKAGE = 'myapplication'
 APP_NAME = "wxSynfig"
 VERSION = "0.0.1"
 
-gui_path = os.path.dirname(__file__)
+gui_path = os.path.dirname(__file__)  # studio\gui
 src_path = os.path.dirname(gui_path)
-studio_path = os.path.dirname(src_path)
-
-images_path = os.path.join(studio_path, "images//")
+studio_path = os.path.dirname(gui_path) # studio
+images_path = os.path.join(studio_path, "images//") #studio\images
 
 #__FILE__ = 
 

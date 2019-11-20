@@ -8,7 +8,7 @@
 //	Copyright (c) 2009 Carlos A. Sosa Navarro
 
 
-//#include "string.h"
+
 mod canvas;
 mod valuenode;
 mod vector;
