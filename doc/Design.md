@@ -2,26 +2,27 @@ wxSynfig Design Document
 =============================
 
 
-# Source Code Folder Structure
+# Folder Structure
+Here is an overview of the wxSynfig source code folder sttucture
 * wxSynfig
   * src
-    * [core/](.\src\core)
-      * [examples/](.\src\core\examples)
-      * [modules/](.\src\core\modules)
-      * [po/](.\src\core\po)
-      * [synfig/](.\src\core\synfig)
-      * [test/](.\src\core\test)
-      * [tool/](.\src\core\tool)
-    * [ETL/](.\src\ETL)
-      * [cpp/](.\src\ETL\cpp)
-      * [src/](.\src\ETL\src)
-      * [test/](.\src\ETL\test)
-    * [studio/](.\src\studio)
-      * [brushlib/](.\src\studio\brushlib)
-      * [gui/](.\src\studio\gui)
-      * [images/](.\src\studio\images)
-      * [plugins/](.\src\studio\plugins)
-      * [synfigapp/](.\src\studio\synfigapp)
+    * core/
+      * examples/
+      * modules/
+      * po/
+      * synfig/
+      * test/
+      * tool/
+    * ETL/
+      * cpp/
+      * src/
+      * test/
+    * studio/
+      * brushlib/
+      * gui/
+      * images/
+      * plugins/
+      * synfigapp/
   * doc
     * Design.md
 
