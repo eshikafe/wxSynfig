@@ -3,7 +3,7 @@ wxSynfig Design Document
 
 
 # Folder Structure
-Here is an overview of the wxSynfig source code folder sttucture
+Here is an overview of the wxSynfig source code folder structure
 ```bash
 |- wxSynfig
 |----src
