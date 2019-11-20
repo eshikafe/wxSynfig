@@ -1,9 +1,10 @@
-wxSynfig Design Documentation
+wxSynfig Design Document
 =============================
 
 Source code folder structure
 ----------------------------
 
+```
 wxSynfig
   |______ src
            |_____ gui
@@ -11,3 +12,5 @@ wxSynfig
 
   |______ doc
            |_____ Design.md
+        
+```
