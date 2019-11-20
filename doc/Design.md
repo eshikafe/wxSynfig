@@ -11,7 +11,7 @@ Here is an overview of the wxSynfig source code folder structure
 |    |  |- examples/
 |    |  |- modules/
 |    |  |- po/
-|    |  |- synfig/
+|    |  |- synfig/    ==> Core synfig functionality files
 |    |  |- test/
 |    |  |- tool/
 |    |- ETL/          ==> Extended Template Library (ported from C++ to Rust)
