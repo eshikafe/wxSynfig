@@ -21,7 +21,7 @@ Here is an overview of the wxSynfig source code folder structure
 |    |- studio/
 |    |  |- brushlib/  ==> Brush library
 |    |  |- gui/       ==> GUI source code files (ported from C++ to Python)
-|    |  |- images/    ==> All images, icons
+|    |  |- images/    ==> All images and icons are stored here
 |    |  |- plugins/   ==> Plugin folder
 |    |  |- synfigapp/
 |----doc
