@@ -14,13 +14,13 @@ Here is an overview of the wxSynfig source code folder structure
 |    |  |- synfig/
 |    |  |- test/
 |    |  |- tool/
-|    |- ETL/
+|    |- ETL/      ==> Extended Template Library
 |    |  |- cpp/
 |    |  |- src/
 |    |  |- test/
 |    |- studio/
 |    |  |- brushlib/
-|    |  |- gui/
+|    |  |- gui/       ==> Contains the GUI source code file
 |    |  |- images/
 |    |  |- plugins/
 |    |  |- synfigapp/
