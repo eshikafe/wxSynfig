@@ -15,4 +15,4 @@ Entry Point:
 
 Screenshot
 -----------
-![screenshot](https://github.com/eshikafe/wxSynfig/blob/master/studio/images/wxSynfig_py3.PNG)
+![screenshot](screenshot-1.PNG)
