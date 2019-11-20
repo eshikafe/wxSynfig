@@ -14,15 +14,15 @@ Here is an overview of the wxSynfig source code folder structure
 |    |  |- synfig/
 |    |  |- test/
 |    |  |- tool/
-|    |- ETL/      ==> Extended Template Library (ported from C++ to Rust)
+|    |- ETL/          ==> Extended Template Library (ported from C++ to Rust)
 |    |  |- cpp/
 |    |  |- src/
 |    |  |- test/
 |    |- studio/
-|    |  |- brushlib/
+|    |  |- brushlib/  ==> Brush library
 |    |  |- gui/       ==> GUI source code files (ported from C++ to Python)
 |    |  |- images/    ==> All images, icons
-|    |  |- plugins/
+|    |  |- plugins/   ==> Plugin folder
 |    |  |- synfigapp/
 |----doc
       |- Design.md
