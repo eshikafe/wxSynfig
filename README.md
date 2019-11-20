@@ -3,7 +3,7 @@ wxSynfig
 A Synfig GUI port to wxPython
 
 
-Installation
+Dependencies
 --------------
 - Python 3.7.2
    - https://www.python.org/downloads/
@@ -11,7 +11,7 @@ Installation
    - pip install wxPython==4.0.7.post2    
 
 Run:
-- `python studio\src\gui\main.py`
+- `python src\studio\gui\main.py`
 
 Screenshot
 -----------

@@ -1,7 +1,7 @@
 
-//	loadcanvas.rs
-//  Implementation for the wxSynfig Canvas Loader (canvas file parser)
-//  Copyright (c) 2019 wxSynfig Developers
+//  loadcanvas.rs
+//      Implementation for the wxSynfig Canvas Loader (canvas file parser) in Rust
+//      Copyright (c) 2019 wxSynfig Developers
 //  
 //	Copyright (c) 2002-2005 Robert B. Quattlebaum Jr., Adrian Bentley
 //	Copyright (c) 2007, 2008 Chris Moore
