@@ -1,5 +1,6 @@
 [package]
-name = "etl"
+name = "ETL"
+description = "Extended Template Library"
 version = "0.1.0"
 authors = ["The wxSynfig Developers"]
 edition = "2018"
@@ -8,3 +9,8 @@ edition = "2018"
 angle = "0.4.0"
 guid = "0.1.0"
 guid-create = "0.1.1"
+
+[lib]
+name = "etl"
+
+
